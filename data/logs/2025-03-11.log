@@ -1,0 +1,54 @@
+[11:36:12] [ERROR] Failed to verify group ID IdkgC0YssaQJPawNiPJY37: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/yf/r/DBxTAKKzYR5.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:159:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:161:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[11:37:02] [ERROR] Failed to verify group ID https://chat.whatsapp.com/IdkgC0YssaQJPawNiPJY37: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/yf/r/DBxTAKKzYR5.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:159:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:161:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[11:44:52] [ERROR] Failed to verify group ID IdkgC0YssaQJPawNiPJY37@g.us: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/yf/r/DBxTAKKzYR5.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:159:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:161:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[11:46:30] [ERROR] Failed to verify group ID IdkgC0YssaQJPawNiPJY37@g.us: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/yf/r/DBxTAKKzYR5.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:159:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:161:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[13:33:50] [ERROR] Failed to verify group ID 1203633072-10435684@g.us: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/yf/r/DBxTAKKzYR5.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:159:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:161:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[14:23:24] [ERROR] Failed to verify group ID 120363413164388361@g.us: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+[14:23:31] [ERROR] Failed to verify group ID 120363413164388361@g.us: Protocol error (Runtime.callFunctionOn): Session closed. Most likely the page has been closed.
+[15:04:01] [ERROR] Failed to verify group ID https://chat.whatsapp.com/IdkgC0YssaQJPawNiPJY37: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/yf/r/DBxTAKKzYR5.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:159:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yS/r/waP07FSPNxw.js:161:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[15:12:00] [INFO] Detected invitation link: https://chat.whatsapp.com/IdkgC0YssaQJPawNiPJY37
+[15:12:00] [INFO] Extracted invitation code: IdkgC0YssaQJPawNiPJY37 from link: https://chat.whatsapp.com/IdkgC0YssaQJPawNiPJY37
+[15:12:00] [INFO] Invite info retrieved: Group "Twitter改【 X 】活動 01" with 3 participants
+[15:12:00] [INFO] Attempting to join group with invitation code: IdkgC0YssaQJPawNiPJY37
+[15:12:01] [SUCCESS] Successfully accepted invitation. Waiting for group info...
+[15:22:44] [INFO] Detected invitation link: https://chat.whatsapp.com/IdkgC0YssaQJPawNiPJY37
+[15:22:44] [INFO] Extracted invitation code: IdkgC0YssaQJPawNiPJY37 from link: https://chat.whatsapp.com/IdkgC0YssaQJPawNiPJY37
+[15:22:45] [INFO] Invite info retrieved: Group "Twitter改【 X 】活動 01" with 3 participants
+[15:22:45] [INFO] Attempting to join group with invitation code: IdkgC0YssaQJPawNiPJY37
+[15:22:45] [SUCCESS] Successfully accepted invitation. Waiting for group info...

@@ -1,0 +1,41 @@
+{
+  "name": "whatsapp-safe-adder",
+  "version": "1.0.0",
+  "description": "An AI agent to safely add members to WhatsApp groups without triggering spam detection",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whatsapp",
+    "automation",
+    "group",
+    "members",
+    "safe"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-rate-limit": "^6.9.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^7.0.0",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.7.1",
+    "whatsapp-web.js": "^1.26.0",
+    "ws": "^8.18.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

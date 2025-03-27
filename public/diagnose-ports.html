@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Server Port Diagnostics</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            color: #128C7E;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .port-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .port-indicator {
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+        .port-indicator h3 {
+            margin: 0 0 10px 0;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+            color: white;
+            margin-top: 10px;
+        }
+        .not-tried {
+            background-color: #9e9e9e;
+        }
+        .testing {
+            background-color: #ffc107;
+        }
+        .whatsapp-app {
+            background-color: #25D366;
+        }
+        .gmail-app {
+            background-color: #DB4437;
+        }
+        .other-app {
+            background-color: #4285F4;
+        }
+        .no-response {
+            background-color: #9e9e9e;
+        }
+        .btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #128C7E;
+        }
+        .logs {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border-radius: 8px;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 3px 5px;
+            border-radius: 4px;
+        }
+        .log-info {
+            color: #90caf9;
+        }
+        .log-success {
+            color: #a5d6a7;
+        }
+        .log-error {
+            color: #ef9a9a;
+        }
+        .test-button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .app-identified {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .correct-port {
+            color: #25D366;
+            font-size: 24px;
+        }
+        .url-panel {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .correct-url {
+            display: inline-block;
+            background-color: #e8f5e9;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+    </style>
+</head>
+<body>
+    <h1>WhatsApp Server Port Diagnostics</h1>
+    
+    <div class="card">
+        <h2>Server Port Detection</h2>
+        <p>This tool will check multiple ports to find where your WhatsApp application is running.</p>
+        
+        <div class="port-status" id="port-status">
+            <!-- Port indicators will be added here dynamically -->
+        </div>
+        
+        <div class="test-button-container">
+            <button class="btn" id="test-ports-btn">Test All Ports</button>
+            <button class="btn" id="clear-logs-btn">Clear Logs</button>
+        </div>
+        
+        <div id="result-container" style="display: none;">
+            <div class="app-identified">
+                WhatsApp application detected on port: <span class="correct-port" id="correct-port"></span>
+            </div>
+            <div class="url-panel">
+                <div class="correct-url" id="correct-url"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>Debug Logs</h2>
+        <div class="logs" id="logs"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const portsToCheck = [3000, 3001, 3002, 3003, 8080];
+            const portStatusEl = document.getElementById('port-status');
+            const logsEl = document.getElementById('logs');
+            const testPortsBtn = document.getElementById('test-ports-btn');
+            const clearLogsBtn = document.getElementById('clear-logs-btn');
+            const resultContainer = document.getElementById('result-container');
+            const correctPortEl = document.getElementById('correct-port');
+            const correctUrlEl = document.getElementById('correct-url');
+            
+            // Initialize port status indicators
+            portsToCheck.forEach(port => {
+                const portEl = document.createElement('div');
+                portEl.className = 'port-indicator';
+                portEl.id = `port-${port}`;
+                portEl.innerHTML = `
+                    <h3>Port ${port}</h3>
+                    <span class="status-badge not-tried">Not Checked</span>
+                `;
+                portStatusEl.appendChild(portEl);
+            });
+            
+            // Function to add log entry
+            function addLog(message, type = 'info') {
+                const now = new Date();
+                const timeStr = now.toTimeString().split(' ')[0];
+                
+                const logEntry = document.createElement('div');
+                logEntry.className = `log-entry log-${type}`;
+                logEntry.textContent = `[${timeStr}] ${message}`;
+                
+                logsEl.appendChild(logEntry);
+                logsEl.scrollTop = logsEl.scrollHeight;
+                console.log(`[${type.toUpperCase()}] ${message}`);
+            }
+            
+            // Function to update port status
+            function updatePortStatus(port, status, appType = null) {
+                const portEl = document.getElementById(`port-${port}`);
+                if (!portEl) return;
+                
+                const statusBadge = portEl.querySelector('.status-badge');
+                statusBadge.className = 'status-badge';
+                
+                switch(status) {
+                    case 'testing':
+                        statusBadge.classList.add('testing');
+                        statusBadge.textContent = 'Testing...';
+                        break;
+                    case 'whatsapp-app':
+                        statusBadge.classList.add('whatsapp-app');
+                        statusBadge.textContent = 'WhatsApp App ✓';
+                        break;
+                    case 'gmail-app':
+                        statusBadge.classList.add('gmail-app');
+                        statusBadge.textContent = 'Gmail App ✗';
+                        break;
+                    case 'other-app':
+                        statusBadge.classList.add('other-app');
+                        statusBadge.textContent = appType || 'Other App ✗';
+                        break;
+                    case 'no-response':
+                        statusBadge.classList.add('no-response');
+                        statusBadge.textContent = 'No Response ✗';
+                        break;
+                    default:
+                        statusBadge.classList.add('not-tried');
+                        statusBadge.textContent = 'Not Checked';
+                }
+            }
+            
+            // Function to check a specific port
+            async function checkPort(port) {
+                updatePortStatus(port, 'testing');
+                addLog(`Testing port ${port}...`);
+                
+                try {
+                    const response = await fetch(`http://localhost:${port}`, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'text/html',
+                            'Cache-Control': 'no-cache'
+                        },
+                        timeout: 5000
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`Response not OK: ${response.status}`);
+                    }
+                    
+                    const html = await response.text();
+                    
+                    // Check for WhatsApp application indicators
+                    if (html.includes('WhatsApp Pro Group Adder') || 
+                        html.includes('WhatsApp Authentication') || 
+                        html.includes('socket.io') && html.includes('QRCode')) {
+                        
+                        addLog(`Port ${port}: WhatsApp application detected! ✓`, 'success');
+                        updatePortStatus(port, 'whatsapp-app');
+                        
+                        // Show result
+                        resultContainer.style.display = 'block';
+                        correctPortEl.textContent = port;
+                        correctUrlEl.textContent = `http://localhost:${port}`;
+                        
+                        return {
+                            port: port,
+                            appType: 'whatsapp',
+                            url: `http://localhost:${port}`
+                        };
+                    } 
+                    // Check for Gmail Contacts Manager
+                    else if (html.includes('Gmail Contacts Manager')) {
+                        addLog(`Port ${port}: Gmail Contacts Manager detected (wrong app) ✗`, 'error');
+                        updatePortStatus(port, 'gmail-app');
+                    }
+                    // Some other application
+                    else {
+                        const title = html.match(/<title>(.*?)<\/title>/i);
+                        const appName = title ? title[1] : 'Unknown App';
+                        addLog(`Port ${port}: Other application detected (${appName}) ✗`, 'error');
+                        updatePortStatus(port, 'other-app', appName);
+                    }
+                } catch (error) {
+                    addLog(`Port ${port}: Error - ${error.message}`, 'error');
+                    updatePortStatus(port, 'no-response');
+                }
+                
+                return null;
+            }
+            
+            // Function to check all ports
+            async function checkAllPorts() {
+                addLog('Starting port scan...', 'info');
+                resultContainer.style.display = 'none';
+                
+                let whatsappPort = null;
+                
+                for (const port of portsToCheck) {
+                    const result = await checkPort(port);
+                    if (result && result.appType === 'whatsapp') {
+                        whatsappPort = result;
+                        break;  // Stop after finding WhatsApp app
+                    }
+                    
+                    // Small delay between checks
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                
+                if (whatsappPort) {
+                    addLog(`Scan complete. WhatsApp application found on port ${whatsappPort.port}`, 'success');
+                } else {
+                    addLog('Scan complete. WhatsApp application not found on any tested port.', 'error');
+                }
+            }
+            
+            // Event listeners
+            testPortsBtn.addEventListener('click', checkAllPorts);
+            
+            clearLogsBtn.addEventListener('click', function() {
+                logsEl.innerHTML = '';
+            });
+            
+            // Initial log
+            addLog('Port diagnostic tool loaded. Click "Test All Ports" to begin.', 'info');
+        });
+    </script>
+</body>
+</html>

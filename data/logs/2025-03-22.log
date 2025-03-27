@@ -1,0 +1,293 @@
+[19:36:56] [INFO] Preparing WhatsApp authentication directory for new session
+[19:36:56] [INFO] Cleaned session data to generate new QR code
+[19:36:56] [INFO] Initializing WhatsApp client with simplified configuration...
+[19:36:56] [SUCCESS] Server running on http://localhost:3000
+[19:37:09] [INFO] QR code received. Ready for scanning.
+[19:37:09] [INFO] QR code generated (2@9hIMJqDIBPv4lB6fzD...). Emitting to UI.
+[19:37:09] [INFO] QR code emitted to web interface
+[19:38:09] [INFO] QR code received. Ready for scanning.
+[19:38:09] [INFO] QR code generated (2@gbA0YUijfZW76/HxLi...). Emitting to UI.
+[19:38:09] [INFO] QR code emitted to web interface
+[19:38:29] [INFO] QR code received. Ready for scanning.
+[19:38:29] [INFO] QR code generated (2@y/boN56TLL3au7n2Xi...). Emitting to UI.
+[19:38:29] [INFO] QR code emitted to web interface
+[19:38:49] [INFO] QR code received. Ready for scanning.
+[19:38:49] [INFO] QR code generated (2@JPH32bFfuBGUl7I0Hw...). Emitting to UI.
+[19:38:49] [INFO] QR code emitted to web interface
+[19:39:09] [INFO] QR code received. Ready for scanning.
+[19:39:09] [INFO] QR code generated (2@M2De4/CTpJphNw2FKA...). Emitting to UI.
+[19:39:09] [INFO] QR code emitted to web interface
+[19:39:29] [INFO] QR code received. Ready for scanning.
+[19:39:29] [INFO] QR code generated (2@4FskS5yjMiA1UwSIOs...). Emitting to UI.
+[19:39:29] [INFO] QR code emitted to web interface
+[19:40:40] [INFO] QR code received. Ready for scanning.
+[19:40:40] [INFO] QR code generated (2@tf8SNa3vcJ8oWlftbL...). Emitting to UI.
+[19:40:40] [INFO] QR code emitted to web interface
+[19:44:01] [INFO] Socket.IO server initialized with enhanced configuration
+[19:44:01] [INFO] Preparing WhatsApp authentication directory for new session
+[19:44:01] [INFO] Cleaned session data to generate new QR code
+[19:44:01] [INFO] Initializing WhatsApp client with simplified configuration...
+[19:44:01] [SUCCESS] Server running on http://localhost:3000
+[19:44:07] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:44:07] [INFO] QR code generated (2@/39t3K0wmZ9pXzLIx2...). Preparing to emit to UI.
+[19:44:07] [INFO] Current Socket.IO connections: 0
+[19:44:07] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:44:07] [INFO] show-qr event emitted to all clients
+[19:45:07] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:45:07] [INFO] QR code generated (2@E3DkLl4UkzNQabl8/m...). Preparing to emit to UI.
+[19:45:07] [INFO] Current Socket.IO connections: 0
+[19:45:07] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:45:07] [INFO] show-qr event emitted to all clients
+[19:45:27] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:45:27] [INFO] QR code generated (2@QkQzOGGzllr2YBbj15...). Preparing to emit to UI.
+[19:45:27] [INFO] Current Socket.IO connections: 0
+[19:45:27] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:45:27] [INFO] show-qr event emitted to all clients
+[19:46:31] [INFO] Socket.IO server initialized with enhanced configuration
+[19:46:31] [INFO] Preparing WhatsApp authentication directory for new session
+[19:46:31] [INFO] Cleaned session data to generate new QR code
+[19:46:31] [INFO] Initializing WhatsApp client with simplified configuration...
+[19:46:31] [SUCCESS] Server running on http://localhost:3000
+[19:46:37] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:46:37] [INFO] QR code generated (2@q0W+lI7VhcOm9Cq3Li...). Preparing to emit to UI.
+[19:46:37] [INFO] Current Socket.IO connections: 0
+[19:46:37] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:46:37] [INFO] show-qr event emitted to all clients
+[19:47:36] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:47:36] [INFO] QR code generated (2@TJqywZRRmAUC8XncTp...). Preparing to emit to UI.
+[19:47:36] [INFO] Current Socket.IO connections: 0
+[19:47:36] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:47:36] [INFO] show-qr event emitted to all clients
+[19:47:56] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:47:56] [INFO] QR code generated (2@Ass8F1lplrpQuYfv+N...). Preparing to emit to UI.
+[19:47:56] [INFO] Current Socket.IO connections: 0
+[19:47:56] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:47:56] [INFO] show-qr event emitted to all clients
+[19:48:16] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:48:16] [INFO] QR code generated (2@ws8k/5Nkcr2x59dUT6...). Preparing to emit to UI.
+[19:48:16] [INFO] Current Socket.IO connections: 0
+[19:48:16] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:48:16] [INFO] show-qr event emitted to all clients
+[19:48:36] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:48:36] [INFO] QR code generated (2@MQikRAWji9imbRuqyE...). Preparing to emit to UI.
+[19:48:36] [INFO] Current Socket.IO connections: 0
+[19:48:36] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:48:36] [INFO] show-qr event emitted to all clients
+[19:48:52] [INFO] Socket.IO server initialized with enhanced configuration
+[19:48:52] [INFO] Preparing WhatsApp authentication directory for new session
+[19:48:52] [INFO] Cleaned session data to generate new QR code
+[19:48:52] [INFO] Initializing WhatsApp client with simplified configuration...
+[19:48:52] [WARNING] Port 3000 is already in use, trying port 3001...
+[19:48:52] [SUCCESS] Server running on http://localhost:3001
+[19:48:58] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:48:58] [INFO] QR code generated (2@tselKhWCXk4Gbm8xqT...). Preparing to emit to UI.
+[19:48:58] [INFO] Current Socket.IO connections: 0
+[19:48:58] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:48:58] [INFO] Found 0 active sockets for direct delivery
+[19:48:58] [INFO] show-qr event emitted to all clients
+[19:49:00] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:49:58] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:49:58] [INFO] QR code generated (2@2ej9Vp1n9M5D6B5frP...). Preparing to emit to UI.
+[19:49:58] [INFO] Current Socket.IO connections: 0
+[19:49:58] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:49:58] [INFO] Found 0 active sockets for direct delivery
+[19:49:58] [INFO] show-qr event emitted to all clients
+[19:50:00] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:50:18] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:50:18] [INFO] QR code generated (2@YrrNaSJes03dOCt+B8...). Preparing to emit to UI.
+[19:50:18] [INFO] Current Socket.IO connections: 0
+[19:50:18] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:50:18] [INFO] Found 0 active sockets for direct delivery
+[19:50:18] [INFO] show-qr event emitted to all clients
+[19:50:20] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:50:38] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:50:38] [INFO] QR code generated (2@/8HNwxc8PDD7vur7qI...). Preparing to emit to UI.
+[19:50:38] [INFO] Current Socket.IO connections: 0
+[19:50:38] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:50:38] [INFO] Found 0 active sockets for direct delivery
+[19:50:38] [INFO] show-qr event emitted to all clients
+[19:50:40] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:50:58] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:50:58] [INFO] QR code generated (2@rMzj8a3K6ZvD3uTgHB...). Preparing to emit to UI.
+[19:50:58] [INFO] Current Socket.IO connections: 0
+[19:50:58] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:50:58] [INFO] Found 0 active sockets for direct delivery
+[19:50:58] [INFO] show-qr event emitted to all clients
+[19:51:00] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:51:18] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:51:18] [INFO] QR code generated (2@/tpE4Z1ZAkRANAR/Xu...). Preparing to emit to UI.
+[19:51:18] [INFO] Current Socket.IO connections: 0
+[19:51:18] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:51:18] [INFO] Found 0 active sockets for direct delivery
+[19:51:18] [INFO] show-qr event emitted to all clients
+[19:51:20] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:52:29] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:52:29] [INFO] QR code generated (2@ZtiDO0oKOX+1EBQlKm...). Preparing to emit to UI.
+[19:52:29] [INFO] Current Socket.IO connections: 0
+[19:52:29] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:52:29] [INFO] Found 0 active sockets for direct delivery
+[19:52:29] [INFO] show-qr event emitted to all clients
+[19:52:31] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:53:29] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:53:29] [INFO] QR code generated (2@HSO9usKQ78iU46iEVH...). Preparing to emit to UI.
+[19:53:29] [INFO] Current Socket.IO connections: 0
+[19:53:29] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:53:29] [INFO] Found 0 active sockets for direct delivery
+[19:53:29] [INFO] show-qr event emitted to all clients
+[19:53:31] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:53:49] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:53:49] [INFO] QR code generated (2@qF9jhykjxpckKo2+pP...). Preparing to emit to UI.
+[19:53:49] [INFO] Current Socket.IO connections: 0
+[19:53:49] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:53:49] [INFO] Found 0 active sockets for direct delivery
+[19:53:49] [INFO] show-qr event emitted to all clients
+[19:53:51] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:54:09] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:54:09] [INFO] QR code generated (2@1T5XfNmLKVn0fx754G...). Preparing to emit to UI.
+[19:54:09] [INFO] Current Socket.IO connections: 0
+[19:54:09] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:54:09] [INFO] Found 0 active sockets for direct delivery
+[19:54:09] [INFO] show-qr event emitted to all clients
+[19:54:11] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:54:29] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:54:29] [INFO] QR code generated (2@w1rm2nTbem8JSoC2zb...). Preparing to emit to UI.
+[19:54:29] [INFO] Current Socket.IO connections: 0
+[19:54:29] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:54:29] [INFO] Found 0 active sockets for direct delivery
+[19:54:29] [INFO] show-qr event emitted to all clients
+[19:54:29] [ERROR] WhatsApp client disconnected: Max qrcode retries reached
+[19:54:31] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:54:34] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[19:54:39] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:54:39] [INFO] QR code generated (2@esHZBTsTuwPxb3ZBLY...). Preparing to emit to UI.
+[19:54:39] [INFO] Current Socket.IO connections: 0
+[19:54:39] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:54:39] [INFO] Found 0 active sockets for direct delivery
+[19:54:39] [INFO] show-qr event emitted to all clients
+[19:54:41] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:55:39] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:55:39] [INFO] QR code generated (2@VQoCT5xreJs8XiG1NF...). Preparing to emit to UI.
+[19:55:39] [INFO] Current Socket.IO connections: 0
+[19:55:39] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:55:39] [INFO] Found 0 active sockets for direct delivery
+[19:55:39] [INFO] show-qr event emitted to all clients
+[19:55:41] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:55:59] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:55:59] [INFO] QR code generated (2@HKYbGC5CfhhT6sp65v...). Preparing to emit to UI.
+[19:55:59] [INFO] Current Socket.IO connections: 0
+[19:55:59] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:55:59] [INFO] Found 0 active sockets for direct delivery
+[19:55:59] [INFO] show-qr event emitted to all clients
+[19:56:01] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:56:19] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:56:19] [INFO] QR code generated (2@IrnJvb1Fs5vNO0Q+X4...). Preparing to emit to UI.
+[19:56:19] [INFO] Current Socket.IO connections: 0
+[19:56:19] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:56:19] [INFO] Found 0 active sockets for direct delivery
+[19:56:19] [INFO] show-qr event emitted to all clients
+[19:56:21] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:56:39] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:56:39] [INFO] QR code generated (2@e0tPQEq0oHgscTv4eY...). Preparing to emit to UI.
+[19:56:39] [INFO] Current Socket.IO connections: 0
+[19:56:39] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:56:39] [INFO] Found 0 active sockets for direct delivery
+[19:56:39] [INFO] show-qr event emitted to all clients
+[19:56:41] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:56:59] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:56:59] [INFO] QR code generated (2@hAlSwjxmsSjPNiwf+B...). Preparing to emit to UI.
+[19:56:59] [INFO] Current Socket.IO connections: 0
+[19:56:59] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:56:59] [INFO] Found 0 active sockets for direct delivery
+[19:56:59] [INFO] show-qr event emitted to all clients
+[19:57:01] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:58:10] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:58:10] [INFO] QR code generated (2@JXmNrgoGKlO+AdQV0f...). Preparing to emit to UI.
+[19:58:10] [INFO] Current Socket.IO connections: 0
+[19:58:10] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:58:10] [INFO] Found 0 active sockets for direct delivery
+[19:58:10] [INFO] show-qr event emitted to all clients
+[19:58:12] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:59:10] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:59:10] [INFO] QR code generated (2@0aUNnPtlUYaIJVfa+t...). Preparing to emit to UI.
+[19:59:10] [INFO] Current Socket.IO connections: 0
+[19:59:10] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:59:10] [INFO] Found 0 active sockets for direct delivery
+[19:59:10] [INFO] show-qr event emitted to all clients
+[19:59:12] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:59:30] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:59:30] [INFO] QR code generated (2@TE1NgsPu0qJVkc/2o6...). Preparing to emit to UI.
+[19:59:30] [INFO] Current Socket.IO connections: 0
+[19:59:30] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:59:30] [INFO] Found 0 active sockets for direct delivery
+[19:59:30] [INFO] show-qr event emitted to all clients
+[19:59:32] [INFO] Performing scheduled QR code rebroadcast for reliability
+[19:59:50] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[19:59:50] [INFO] QR code generated (2@fNfx1hmpgesadD9E/X...). Preparing to emit to UI.
+[19:59:50] [INFO] Current Socket.IO connections: 0
+[19:59:50] [INFO] QR code emitted to all clients with event: 'qr-code'
+[19:59:50] [INFO] Found 0 active sockets for direct delivery
+[19:59:50] [INFO] show-qr event emitted to all clients
+[19:59:52] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:00:10] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:00:10] [INFO] QR code generated (2@tDj6fiAM4ZeXEfNE+P...). Preparing to emit to UI.
+[20:00:10] [INFO] Current Socket.IO connections: 0
+[20:00:10] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:00:10] [INFO] Found 0 active sockets for direct delivery
+[20:00:10] [INFO] show-qr event emitted to all clients
+[20:00:10] [ERROR] WhatsApp client disconnected: Max qrcode retries reached
+[20:00:12] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:00:15] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[20:00:21] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:00:21] [INFO] QR code generated (2@buIa7MwKjNQQunBJg/...). Preparing to emit to UI.
+[20:00:21] [INFO] Current Socket.IO connections: 0
+[20:00:21] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:00:21] [INFO] Found 0 active sockets for direct delivery
+[20:00:21] [INFO] show-qr event emitted to all clients
+[20:00:23] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:01:20] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:01:20] [INFO] QR code generated (2@TfIA94hOeX2cz6zQIg...). Preparing to emit to UI.
+[20:01:20] [INFO] Current Socket.IO connections: 0
+[20:01:20] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:01:20] [INFO] Found 0 active sockets for direct delivery
+[20:01:20] [INFO] show-qr event emitted to all clients
+[20:01:22] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:01:40] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:01:40] [INFO] QR code generated (2@ujvBQ4Q+90e28qJUjP...). Preparing to emit to UI.
+[20:01:40] [INFO] Current Socket.IO connections: 0
+[20:01:40] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:01:40] [INFO] Found 0 active sockets for direct delivery
+[20:01:40] [INFO] show-qr event emitted to all clients
+[20:01:42] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:02:00] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:02:00] [INFO] QR code generated (2@agp28tCcc25TgxV51p...). Preparing to emit to UI.
+[20:02:00] [INFO] Current Socket.IO connections: 0
+[20:02:00] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:02:00] [INFO] Found 0 active sockets for direct delivery
+[20:02:00] [INFO] show-qr event emitted to all clients
+[20:02:02] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:02:20] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:02:20] [INFO] QR code generated (2@mAiJqs1qnkh/gdBXBv...). Preparing to emit to UI.
+[20:02:20] [INFO] Current Socket.IO connections: 0
+[20:02:20] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:02:20] [INFO] Found 0 active sockets for direct delivery
+[20:02:20] [INFO] show-qr event emitted to all clients
+[20:02:22] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:02:40] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:02:40] [INFO] QR code generated (2@BqitAusWoVvXQWkM3q...). Preparing to emit to UI.
+[20:02:40] [INFO] Current Socket.IO connections: 0
+[20:02:40] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:02:40] [INFO] Found 0 active sockets for direct delivery
+[20:02:40] [INFO] show-qr event emitted to all clients
+[20:02:42] [INFO] Performing scheduled QR code rebroadcast for reliability
+[20:03:46] [INFO] Socket.IO server initialized with enhanced configuration
+[20:03:46] [INFO] Preparing WhatsApp authentication directory for new session
+[20:03:46] [INFO] Cleaned session data to generate new QR code
+[20:03:46] [INFO] Initializing WhatsApp client with simplified configuration...
+[20:03:46] [SUCCESS] Server running on http://localhost:3000
+[20:03:51] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[20:03:51] [INFO] QR code generated (2@fk4/CCop1ozNgI5M15...). Preparing to emit to UI.
+[20:03:51] [INFO] Current Socket.IO connections: 0
+[20:03:51] [INFO] QR code emitted to all clients with event: 'qr-code'
+[20:03:51] [INFO] Found 0 active sockets for direct delivery
+[20:03:51] [INFO] show-qr event emitted to all clients
+[20:03:53] [INFO] Performing scheduled QR code rebroadcast for reliability

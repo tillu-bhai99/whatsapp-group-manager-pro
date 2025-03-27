@@ -1,0 +1,75 @@
+[07:23:54] [INFO] Socket.IO server initialized with enhanced configuration
+[07:23:54] [INFO] Preparing WhatsApp authentication directory for new session
+[07:23:54] [INFO] Cleaned session data to generate new QR code
+[07:23:54] [INFO] Initializing WhatsApp client with simplified configuration...
+[07:23:54] [SUCCESS] Server running on http://localhost:3000
+[07:24:08] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[07:24:08] [INFO] QR code generated (2@bRjqRkdqB1vtRTLcxY...). Preparing to emit to UI.
+[07:24:08] [INFO] Current Socket.IO connections: 0
+[07:24:08] [INFO] QR code emitted to all clients with event: 'qr-code'
+[07:24:08] [INFO] Found 0 active sockets for direct delivery
+[07:24:08] [INFO] show-qr event emitted to all clients
+[07:24:10] [INFO] Performing scheduled QR code rebroadcast for reliability
+[07:25:08] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[07:25:08] [INFO] QR code generated (2@9eofyLNfgsEiWm4zcw...). Preparing to emit to UI.
+[07:25:08] [INFO] Current Socket.IO connections: 0
+[07:25:08] [INFO] QR code emitted to all clients with event: 'qr-code'
+[07:25:08] [INFO] Found 0 active sockets for direct delivery
+[07:25:08] [INFO] show-qr event emitted to all clients
+[07:25:10] [INFO] Performing scheduled QR code rebroadcast for reliability
+[07:25:21] [SUCCESS] Successfully authenticated with WhatsApp
+[07:25:22] [SUCCESS] WhatsApp client is ready and connected!
+[07:25:37] [SUCCESS] Successfully authenticated with WhatsApp
+[07:25:37] [INFO] QR code received from WhatsApp Web. Ready for scanning.
+[07:25:37] [INFO] QR code generated (undefined,Mnik31t+0O...). Preparing to emit to UI.
+[07:25:37] [INFO] Current Socket.IO connections: 0
+[07:25:37] [INFO] QR code emitted to all clients with event: 'qr-code'
+[07:25:37] [INFO] Found 0 active sockets for direct delivery
+[07:25:37] [INFO] show-qr event emitted to all clients
+[07:25:37] [SUCCESS] Successfully authenticated with WhatsApp
+[07:25:38] [SUCCESS] WhatsApp client is ready and connected!
+[07:25:38] [SUCCESS] WhatsApp client is ready and connected!
+[07:25:38] [ERROR] WhatsApp client disconnected: LOGOUT
+[07:25:38] [ERROR] UNHANDLED REJECTION: Error: Error: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+[07:25:38] [ERROR] Stack trace: Error: Error: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\authStrategies\LocalAuth.js:49:27
+    at async LocalAuth.logout (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\authStrategies\LocalAuth.js:47:13)
+    at async C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\Client.js:347:17
+[07:25:39] [INFO] Performing scheduled QR code rebroadcast for reliability
+[07:25:43] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[07:33:39] [INFO] Socket.IO server initialized with enhanced configuration
+[07:33:39] [INFO] Preparing WhatsApp authentication directory for new session
+[07:33:39] [INFO] Cleaned session data to generate new QR code
+[07:33:39] [INFO] Initializing WhatsApp client with simplified configuration...
+[07:33:39] [WARNING] Port 3000 is already in use, trying port 3001...
+[07:33:39] [SUCCESS] Server running on http://localhost:3001
+[07:34:21] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[07:34:21] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[07:34:21] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[07:35:53] [INFO] Socket.IO server initialized with enhanced configuration
+[07:35:53] [INFO] Using existing WhatsApp authentication session
+[07:35:53] [INFO] Initializing WhatsApp client with simplified configuration...
+[07:35:53] [WARNING] Port 3000 is already in use, trying port 3001...
+[07:35:53] [SUCCESS] Server running on http://localhost:3001
+[07:38:34] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[07:38:34] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[07:38:34] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[07:38:53] [INFO] Socket.IO server initialized with enhanced configuration
+[07:38:53] [INFO] Using existing WhatsApp authentication session
+[07:38:53] [INFO] Initializing WhatsApp client with simplified configuration...
+[07:38:53] [WARNING] Port 3000 is already in use, trying port 3001...
+[07:38:53] [SUCCESS] Server running on http://localhost:3001
+[07:38:59] [SUCCESS] Successfully authenticated with WhatsApp
+[07:39:00] [SUCCESS] WhatsApp client is ready and connected!

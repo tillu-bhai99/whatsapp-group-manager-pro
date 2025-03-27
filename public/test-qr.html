@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp QR Code Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #128C7E;
+        }
+        #status {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .status-connecting {
+            background-color: #FFF3CD;
+            color: #856404;
+        }
+        .status-connected {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+        .status-error {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+        #qrcode {
+            text-align: center;
+            margin: 20px 0;
+            min-height: 220px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #logs {
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        .log-entry {
+            margin: 5px 0;
+        }
+        .log-success {
+            color: #a5d6a7;
+        }
+        .log-error {
+            color: #ef9a9a;
+        }
+        .log-info {
+            color: #90caf9;
+        }
+        button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhatsApp QR Code Test Page</h1>
+        <p>This is a diagnostic page to test QR code generation and display.</p>
+        
+        <div id="status" class="status-connecting">
+            <strong>Status:</strong> Connecting to server...
+        </div>
+        
+        <h2>QR Code</h2>
+        <div id="qrcode">
+            <p>Waiting for QR code...</p>
+        </div>
+        
+        <button id="refresh-qr">Refresh QR Code</button>
+    </div>
+    
+    <div class="container">
+        <h2>Debug Logs</h2>
+        <div id="logs"></div>
+    </div>
+
+    <!-- Required Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.1/dist/socket.io.min.js"></script>
+    <!-- Use a more reliable CDN for QRCode library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        // Simple global variables for logging and debugging
+        let statusEl, qrcodeEl, logsEl, refreshBtn, socket;
+        let socketConnected = false;
+        let receivedEvents = [];
+        
+        // Wait for page to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            
+            // Initialize DOM elements
+            statusEl = document.getElementById('status');
+            qrcodeEl = document.getElementById('qrcode');
+            logsEl = document.getElementById('logs');
+            refreshBtn = document.getElementById('refresh-qr');
+            
+            // Add some basic logging to the page
+            addLogEntry('Page loaded, initializing...', 'info');
+            addLogEntry('Checking QRCode library...', 'info');
+            
+            // Check if QRCode library is loaded with a delay to ensure scripts have time to load
+            setTimeout(function() {
+                if (typeof QRCode === 'undefined') {
+                    addLogEntry('QRCode library not found, attempting to reload', 'error');
+                    loadQRCodeLibrary();
+                } else {
+                    addLogEntry('QRCode library loaded successfully', 'success');
+                    connectToSocket();
+                }
+            }, 500); // Give a short delay for scripts to load
+            
+            // Set up refresh button
+            refreshBtn.addEventListener('click', function() {
+                addLogEntry('Refresh QR button clicked', 'info');
+                if (socket && socketConnected) {
+                    addLogEntry('Requesting new QR code from server', 'info');
+                    socket.emit('request-qr-refresh');
+                } else {
+                    addLogEntry('Cannot refresh QR - socket not connected', 'error');
+                    // Try to reconnect
+                    connectToSocket();
+                }
+            });
+        });
+        
+        // Load QRCode library dynamically
+        function loadQRCodeLibrary() {
+            addLogEntry('Attempting to load QRCode library dynamically...', 'info');
+            const script = document.createElement('script');
+            // Try a different CDN
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
+            script.onload = function() {
+                addLogEntry('QRCode library loaded successfully', 'success');
+                connectToSocket();
+            };
+            script.onerror = function() {
+                addLogEntry('Failed to load QRCode library from CDN, trying alternate source', 'error');
+                
+                // Try an alternate CDN as fallback
+                const fallbackScript = document.createElement('script');
+                fallbackScript.src = "https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js";
+                fallbackScript.onload = function() {
+                    addLogEntry('QRCode library loaded successfully from fallback CDN', 'success');
+                    connectToSocket();
+                };
+                fallbackScript.onerror = function() {
+                    addLogEntry('All attempts to load QRCode library failed', 'error');
+                    // Try to continue anyway - the server component is more important
+                    connectToSocket();
+                };
+                document.head.appendChild(fallbackScript);
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Simple function to add logs to the page
+        function addLogEntry(message, type = 'info') {
+            console.log(`${type.toUpperCase()}: ${message}`);
+            
+            if (!logsEl) {
+                console.error("Log element not found!");
+                return;
+            }
+            
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            logEntry.textContent = `[${timeStr}] ${message}`;
+            
+            logsEl.appendChild(logEntry);
+            logsEl.scrollTop = logsEl.scrollHeight;
+        }
+        
+        // Update the status display
+        function updateStatus(message, type) {
+            statusEl.textContent = `Status: ${message}`;
+            statusEl.className = `status-${type}`;
+        }
+        
+        // Connect to Socket.IO server
+        function connectToSocket() {
+            addLogEntry('Connecting to server via Socket.IO...', 'info');
+            updateStatus('Connecting to server...', 'connecting');
+            
+            // Create new socket connection
+            socket = io();
+            
+            socket.on('connect', function() {
+                socketConnected = true;
+                updateStatus('Connected to server!', 'connected');
+                addLogEntry(`Socket connected with ID: ${socket.id}`, 'success');
+                
+                // Log that we're waiting for QR code
+                addLogEntry('Waiting for QR code from server...', 'info');
+            });
+            
+            socket.on('connect_error', function(error) {
+                socketConnected = false;
+                updateStatus('Connection error!', 'error');
+                addLogEntry(`Socket connection error: ${error.message}`, 'error');
+            });
+            
+            socket.on('disconnect', function(reason) {
+                socketConnected = false;
+                updateStatus(`Disconnected: ${reason}`, 'error');
+                addLogEntry(`Socket disconnected: ${reason}`, 'error');
+            });
+            
+            // Track any events received from server
+            socket.onAny((event, ...args) => {
+                receivedEvents.push(event);
+                addLogEntry(`Event received: ${event}`, 'info');
+            });
+        
+        // Handle QR code event specifically
+        socket.on('qr-code', function(data) {
+            addLogEntry('QR code event received from server!', 'success');
+            
+            // Log data details
+            if (!data) {
+                addLogEntry('Error: QR data is empty', 'error');
+                return;
+            }
+            
+            if (!data.qr) {
+                addLogEntry('Error: QR data missing qr property', 'error');
+                return;
+            }
+            
+            addLogEntry(`Received QR code data: ${data.qr.substring(0, 20)}...`, 'info');
+            
+            // Create QR code using the simplest possible method
+            try {
+                // Clear the container first
+                qrcodeEl.innerHTML = '';
+                
+                // Check if QRCode library is available
+                if (typeof QRCode === 'undefined') {
+                    addLogEntry('QRCode library not available for rendering', 'error');
+                    return;
+                }
+                
+                // Create simple QR code with minimal options
+                new QRCode(qrcodeEl, {
+                    text: data.qr,
+                    width: 256,
+                    height: 256,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff"
+                });
+                
+                addLogEntry('QR code rendered successfully!', 'success');
+            } catch (err) {
+                addLogEntry(`Error rendering QR code: ${err.message}`, 'error');
+                qrcodeEl.innerHTML = '<p>Failed to generate QR code</p>';
+            }
+        });
+        
+        // QR show event
+        socket.on('show-qr', function() {
+            addLogEntry('Show QR event received', 'info');
+            qrcodeEl.innerHTML = '<p>Preparing QR code...</p>';
+        });
+        
+        // WhatsApp status event
+        socket.on('whatsapp-status', function(status) {
+            addLogEntry(`WhatsApp status event received: ${JSON.stringify(status)}`, 'info');
+            
+            if (status && status.connected) {
+                updateStatus('WhatsApp is connected and ready to use!', 'connected');
+                qrcodeEl.innerHTML = `
+                    <div style="text-align: center; color: #128C7E;">
+                        <h3>WhatsApp is already connected!</h3>
+                        <p>No QR code needed for authentication.</p>
+                        <p>You can proceed with using the application.</p>
+                    </div>
+                `;
+                addLogEntry('WhatsApp is already authenticated - showing connected state', 'success');
+            }
+        });
+        
+        // Listen for authenticated event directly
+        socket.on('whatsapp-authenticated', function() {
+            addLogEntry('WhatsApp authenticated event received', 'success');
+            updateStatus('WhatsApp successfully authenticated!', 'connected');
+            qrcodeEl.innerHTML = `
+                <div style="text-align: center; color: #128C7E;">
+                    <h3>WhatsApp successfully authenticated!</h3>
+                    <p>You're now connected and ready to use the application.</p>
+                </div>
+            `;
+        });
+        
+        socket.on('awaiting-qr', function() {
+            addLogEntry('Awaiting QR code event received', 'info');
+            qrcodeEl.innerHTML = '<p>Awaiting new QR code...</p>';
+        });
+        }
+    </script>
+</body>
+</html>

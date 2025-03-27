@@ -1,4 +1,4 @@
-# whatsapp-group-manager-pro
+# WhatsApp Group Manager Pro
 
 A professional-grade WhatsApp group management tool for safely adding members to WhatsApp groups with advanced anti-ban protection and intelligent rate limiting.
 

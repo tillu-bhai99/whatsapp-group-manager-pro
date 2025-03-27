@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Group Manager Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #25D366;
+            --primary-dark: #128C7E;
+            --secondary: #34B7F1;
+            --dark: #075E54;
+            --light: #ECE5DD;
+            --gray: #f0f2f5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+            background-color: var(--gray);
+            color: #212529;
+            line-height: 1.6;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .navbar-brand i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .stats-card-header h5 {
+            margin: 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stats-card-header i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .stats-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .progress {
+            height: 10px;
+            margin: 10px 0;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .content-card-header {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .content-card-header h4 {
+            margin: 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .content-card-header i {
+            font-size: 1.25rem;
+        }
+        
+        .content-card-body {
+            padding: 20px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(37, 211, 102, 0.25);
+        }
+        
+        .group-info-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .qr-container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        #qrcode {
+            display: inline-block;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin: 20px auto;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-connected {
+            background-color: #28a745;
+        }
+        
+        .status-disconnected {
+            background-color: #dc3545;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: #6c757d;
+            font-weight: 500;
+            padding: 10px 15px;
+        }
+        
+        .nav-tabs .nav-link.active {
+            border-color: var(--primary);
+            color: var(--primary-dark);
+            background-color: transparent;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            border-color: #e9ecef;
+        }
+        
+        .number-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+        }
+        
+        .log-container {
+            background-color: #212529;
+            color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .log-entry {
+            margin: 5px 0;
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .log-success {
+            color: #a5d6a7;
+        }
+        
+        .log-error {
+            color: #ef9a9a;
+        }
+        
+        .log-info {
+            color: #90caf9;
+        }
+        
+        .badge-protection-on {
+            background-color: #dc3545;
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        .badge-protection-off {
+            background-color: #28a745;
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .warning-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .stats-card {
+                margin-bottom: 20px;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Toast styling */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        .toast {
+            width: 350px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .toast-success {
+            background-color: rgba(40, 167, 69, 0.9);
+            color: white;
+        }
+        
+        .toast-error {
+            background-color: rgba(220, 53, 69, 0.9);
+            color: white;
+        }
+        
+        .toast-info {
+            background-color: rgba(13, 110, 253, 0.9);
+            color: white;
+        }
+        
+        .toast-header {
+            background-color: transparent;
+            color: inherit;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Table styling */
+        .table {
+            margin-bottom: 0;
+        }
+        
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            border-top: none;
+        }
+        
+        .table td, .table th {
+            vertical-align: middle;
+            padding: 12px 15px;
+        }
+        
+        /* Loading spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+        
+        .spinner-border {
+            color: var(--primary);
+        }
+        
+        /* Batch progress */
+        .batch-progress-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .batch-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .batch-detail-item {
+            padding: 10px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .batch-title {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .batch-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fab fa-whatsapp"></i> WhatsApp Group Manager Pro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="check-connection-btn">
+                            <span class="status-indicator status-disconnected" id="connection-indicator"></span>
+                            <span id="connection-status">Disconnected</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#diagnosticsModal">
+                            <i class="fas fa-tools"></i> Diagnostics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1>Add Members to WhatsApp Groups</h1>
+            <p class="text-muted">Safe, efficient group management with anti-ban protection</p>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="row mb-4">
+            <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h5><i class="fas fa-user-plus"></i> Today</h5>
+                    </div>
+                    <div class="stats-card-body text-center">
+                        <div class="stat-value" id="added-today">0</div>
+                        <div class="stat-label">Members Added Today</div>
+                        <div class="progress">
+                            <div class="progress-bar" id="daily-progress" style="width: 0%"></div>
+                        </div>
+                        <div class="stat-label"><span id="daily-remaining">0</span> of <span id="daily-limit">20000</span> remaining</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h5><i class="fas fa-hourglass-half"></i> Hourly</h5>
+                    </div>
+                    <div class="stats-card-body text-center">
+                        <div class="stat-value" id="hourly-added">0</div>
+                        <div class="stat-label">Members Added This Hour</div>
+                        <div class="progress">
+                            <div class="progress-bar" id="hourly-progress" style="width: 0%"></div>
+                        </div>
+                        <div class="stat-label"><span id="hourly-remaining">0</span> of <span id="hourly-limit">1000</span> remaining</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3 mb-md-0">
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h5><i class="fas fa-shield-alt"></i> Protection</h5>
+                    </div>
+                    <div class="stats-card-body text-center">
+                        <div id="protection-status-container">
+                            <span id="protection-status" class="badge badge-protection-off">Inactive</span>
+                        </div>
+                        <div class="stat-label mt-2">Anti-Ban Protection Status</div>
+                        <div class="mt-3" id="protection-timer-container" style="display: none;">
+                            <div class="stat-value" id="protection-timer">00:00</div>
+                            <div class="stat-label">Time Remaining</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h5><i class="fas fa-tasks"></i> Batch</h5>
+                    </div>
+                    <div class="stats-card-body text-center">
+                        <div id="no-batch" class="mt-3">
+                            <div class="stat-value">-</div>
+                            <div class="stat-label">No active batch</div>
+                        </div>
+                        <div id="active-batch" style="display: none;">
+                            <div class="stat-value" id="batch-progress-value">0%</div>
+                            <div class="stat-label">Batch Progress</div>
+                            <div class="progress">
+                                <div class="progress-bar" id="batch-progress-bar" style="width: 0%"></div>
+                            </div>
+                            <div class="stat-label">
+                                <span id="batch-processed">0</span>/<span id="batch-total">0</span> processed
+                            </div>
+                            <button id="resume-batch-btn" class="btn btn-sm btn-primary mt-2" style="display: none;">
+                                <i class="fas fa-play me-1"></i> Resume Batch
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="row">
+            <!-- Left Column - QR Code / WhatsApp Auth -->
+            <div class="col-lg-4 mb-4">
+                <div class="content-card" id="auth-card">
+                    <div class="content-card-header">
+                        <h4><i class="fas fa-qrcode"></i> WhatsApp Connection</h4>
+                    </div>
+                    <div class="content-card-body">
+                        <div id="connection-info" class="mb-3">
+                            <p>Scan the QR code with WhatsApp on your phone to connect:</p>
+                            <ol class="small text-muted">
+                                <li>Open WhatsApp on your phone</li>
+                                <li>Tap Menu or Settings and select Linked Devices</li>
+                                <li>Tap on "Link a Device"</li>
+                                <li>Point your phone to this screen to scan the QR code</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="qr-container">
+                            <div id="qrcode">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Waiting for QR code...</p>
+                            </div>
+                        </div>
+                        
+                        <button id="refresh-qr-btn" class="btn btn-primary w-100">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh QR Code
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Failed Numbers</h4>
+                    </div>
+                    <div class="content-card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="mb-0">Recently Failed Numbers</h6>
+                            <button id="clear-failures-btn" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash-alt me-1"></i> Clear All
+                            </button>
+                        </div>
+                        
+                        <div id="failed-numbers-container" class="table-responsive">
+                            <table class="table table-sm table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Phone Number</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="failed-numbers-body">
+                                    <tr>
+                                        <td colspan="2" class="text-center">No failed numbers</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <button id="view-all-failures-btn" class="btn btn-sm btn-outline-primary w-100 mt-2">
+                            <i class="fas fa-list-ul me-1"></i> View Full Failed Numbers Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Add Members Form -->
+            <div class="col-lg-8">
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h4><i class="fas fa-users"></i> Add Members to Group</h4>
+                    </div>
+                    <div class="content-card-body">
+                        <div class="info-box mb-4">
+                            <h5><i class="fas fa-shield-alt me-1"></i> Anti-Ban Protection Active</h5>
+                            <p class="mb-0">This tool uses an advanced two-step process that mimics manual behavior. Each contact is saved to device contacts before being added to the group, significantly reducing the risk of WhatsApp limitations.</p>
+                        </div>
+                        
+                        <form id="add-members-form">
+                            <div class="mb-3">
+                                <label for="group-id" class="form-label">WhatsApp Group Invitation Link or ID</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                    <input type="text" class="form-control" id="group-id" placeholder="https://chat.whatsapp.com/AbCdEfGhIjKl" required>
+                                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#helpModal">
+                                        <i class="fas fa-question-circle"></i>
+                                    </button>
+                                </div>
+                                <div class="form-text">Paste a WhatsApp group invitation link (recommended) or group ID</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="greeting-message" class="form-label">Welcome Message (Optional)</label>
+                                <textarea class="form-control" id="greeting-message" rows="2" placeholder="Welcome to the group!"></textarea>
+                                <div class="form-text">This message will be sent to the group after members are added</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Phone Numbers</label>
+                                
+                                <ul class="nav nav-tabs" id="numbers-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual-input" type="button" role="tab">
+                                            <i class="fas fa-keyboard me-1"></i> Manual Entry
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="csv-tab" data-bs-toggle="tab" data-bs-target="#csv-upload" type="button" role="tab">
+                                            <i class="fas fa-file-csv me-1"></i> CSV Upload
+                                        </button>
+                                    </li>
+                                </ul>
+                                
+                                <div class="tab-content mt-3" id="numbers-tab-content">
+                                    <div class="tab-pane fade show active" id="manual-input" role="tabpanel">
+                                        <div class="mb-3">
+                                            <textarea class="form-control" id="phone-numbers" rows="4" placeholder="Enter phone numbers (one per line)"></textarea>
+                                            <div class="form-text">Include country code without '+' (e.g., 911234567890)</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tab-pane fade" id="csv-upload" role="tabpanel">
+                                        <div class="mb-3">
+                                            <input class="form-control" type="file" id="csv-file" accept=".csv">
+                                            <div class="form-text">CSV should have a column with phone numbers</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="number-preview" class="number-list d-none">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">Numbers to add (<span id="number-count">0</span>):</h6>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="clear-numbers-btn">
+                                        <i class="fas fa-times me-1"></i> Clear
+                                    </button>
+                                </div>
+                                <div id="number-list"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100" id="add-button">
+                                <i class="fas fa-user-plus me-1"></i> Add Members
+                            </button>
+                        </form>
+                        
+                        <!-- Batch Progress (appears when adding in progress) -->
+                        <div class="batch-progress-container" id="batch-progress-container">
+                            <h5 class="mb-3"><i class="fas fa-spinner fa-spin me-2"></i> Adding Members in Progress</h5>
+                            
+                            <div class="batch-details">
+                                <div class="batch-detail-item">
+                                    <div class="batch-title">Progress</div>
+                                    <div class="batch-value"><span id="batch-percent">0%</span></div>
+                                </div>
+                                
+                                <div class="batch-detail-item">
+                                    <div class="batch-title">Added</div>
+                                    <div class="batch-value"><span id="batch-added">0</span></div>
+                                </div>
+                                
+                                <div class="batch-detail-item">
+                                    <div class="batch-title">Failed</div>
+                                    <div class="batch-value"><span id="batch-failed">0</span></div>
+                                </div>
+                                
+                                <div class="batch-detail-item">
+                                    <div class="batch-title">Estimated Completion</div>
+                                    <div class="batch-value"><span id="batch-eta">--:--</span></div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress" style="height: 15px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" id="detailed-progress-bar" style="width: 0%"></div>
+                            </div>
+                            
+                            <div class="mt-3 text-center" id="operation-status"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="content-card-header">
+                        <h4><i class="fas fa-terminal"></i> Activity Log</h4>
+                        <button class="btn btn-sm btn-outline-light" id="clear-logs-btn">
+                            <i class="fas fa-trash-alt me-1"></i> Clear
+                        </button>
+                    </div>
+                    <div class="content-card-body">
+                        <div class="log-container" id="logs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">How to Find Your WhatsApp Group ID</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success mb-4">
+                        <h5><i class="fas fa-check-circle me-2"></i>Easiest Method: Invitation Link</h5>
+                        <p class="mb-0">Simply paste a WhatsApp invitation link and the system will automatically handle everything - no group ID needed!</p>
+                    </div>
+                    
+                    <h5>To get a group invitation link:</h5>
+                    <ol>
+                        <li>Open the WhatsApp group</li>
+                        <li>Tap the group name at the top</li>
+                        <li>Scroll down and tap "Invite to Group via Link"</li>
+                        <li>Copy the link</li>
+                        <li>Paste the entire invitation link into the field</li>
+                    </ol>
+                    
+                    <p>Example link: <code>https://chat.whatsapp.com/AbCdEfGhIjKl</code></p>
+                    
+                    <div class="alert alert-info mt-4">
+                        <h5><i class="fas fa-info-circle me-2"></i>Advanced: Using Group ID</h5>
+                        <p>If you're already a member of the group, you can use the group ID directly.</p>
+                        <p class="mb-0">A valid WhatsApp group ID looks like: <code>1234567890-1234567890@g.us</code> or <code>123456789012345@g.us</code></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got It!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Advanced Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="settings-form">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="daily-limit-input" class="form-label">Daily Member Limit</label>
+                                <input type="number" class="form-control" id="daily-limit-input" value="20000" min="1" max="50000">
+                                <div class="form-text">Maximum members to add per day (recommended: 20,000)</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="hourly-limit-input" class="form-label">Hourly Member Limit</label>
+                                <input type="number" class="form-control" id="hourly-limit-input" value="1000" min="1" max="5000">
+                                <div class="form-text">Maximum members to add per hour (recommended: 1,000)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="min-delay" class="form-label">Minimum Delay (seconds)</label>
+                                <input type="number" class="form-control" id="min-delay" value="30" min="15" max="300">
+                                <div class="form-text">Minimum time between additions (recommended: 30)</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="max-delay" class="form-label">Maximum Delay (seconds)</label>
+                                <input type="number" class="form-control" id="max-delay" value="90" min="30" max="600">
+                                <div class="form-text">Maximum time between additions (recommended: 90)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="max-batch-size" class="form-label">Maximum Batch Size</label>
+                                <input type="number" class="form-control" id="max-batch-size" value="1000" min="100" max="5000">
+                                <div class="form-text">Members to process before taking a longer break</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check mt-4">
+                                    <input class="form-check-input" type="checkbox" id="pattern-variation" checked>
+                                    <label class="form-check-label" for="pattern-variation">
+                                        Enable Pattern Variation
+                                    </label>
+                                    <div class="form-text">Randomizes delay patterns to avoid detection</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Warning:</strong> Reducing delays and increasing limits may trigger WhatsApp's anti-spam measures. Use caution when adjusting these settings.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-settings-btn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Diagnostics Modal -->
+    <div class="modal fade" id="diagnosticsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Diagnostics & Troubleshooting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-around mb-4">
+                        <a href="diagnose-ports.html" class="btn btn-outline-primary" target="_blank">
+                            <i class="fas fa-network-wired me-1"></i> Server Port Diagnostic
+                        </a>
+                        <a href="socket-test.html" class="btn btn-outline-primary" target="_blank">
+                            <i class="fas fa-plug me-1"></i> Socket Connection Test
+                        </a>
+                        <a href="test-qr.html" class="btn btn-outline-primary" target="_blank">
+                            <i class="fas fa-qrcode me-1"></i> QR Code Test
+                        </a>
+                    </div>
+                    
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            System Status
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>WhatsApp Client:</strong> <span id="diag-whatsapp-status">Unknown</span></p>
+                                    <p><strong>Socket Connection:</strong> <span id="diag-socket-status">Unknown</span></p>
+                                    <p><strong>Protection Status:</strong> <span id="diag-protection-status">Unknown</span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Current Server Port:</strong> <span id="diag-server-port">Unknown</span></p>
+                                    <p><strong>Active Socket ID:</strong> <span id="diag-socket-id">Unknown</span></p>
+                                    <p><strong>Session Start Time:</strong> <span id="diag-session-time">Unknown</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            Common Issues & Solutions
+                        </div>
+                        <div class="card-body">
+                            <div class="accordion" id="troubleshootingAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qrIssue">
+                                            QR Code Not Displaying
+                                        </button>
+                                    </h2>
+                                    <div id="qrIssue" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                        <div class="accordion-body">
+                                            <p>If the QR code is not displaying:</p>
+                                            <ol>
+                                                <li>Click the "Refresh QR Code" button</li>
+                                                <li>Check if the server is running on the correct port</li>
+                                                <li>Run the "Socket Connection Test" from the diagnostics menu</li>
+                                                <li>Try opening the app in a different browser</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#connectionIssue">
+                                            Connection Problems
+                                        </button>
+                                    </h2>
+                                    <div id="connectionIssue" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                                        <div class="accordion-body">
+                                            <p>If you're having trouble connecting to WhatsApp:</p>
+                                            <ol>
+                                                <li>Make sure your phone has an active internet connection</li>
+                                                <li>Verify that WhatsApp is installed and working on your phone</li>
+                                                <li>Completely close WhatsApp on your phone, then reopen and try again</li>
+                                                <li>Try using the "QR Code Test" from the diagnostics menu</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@4.7.2/dist/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const connectionIndicator = document.getElementById('connection-indicator');
+            const connectionStatus = document.getElementById('connection-status');
+            const qrcodeEl = document.getElementById('qrcode');
+            const refreshQrBtn = document.getElementById('refresh-qr-btn');
+            const addMembersForm = document.getElementById('add-members-form');
+            const groupIdInput = document.getElementById('group-id');
+            const greetingMessage = document.getElementById('greeting-message');
+            const phoneNumbersInput = document.getElementById('phone-numbers');
+            const csvFileInput = document.getElementById('csv-file');
+            const numberPreview = document.getElementById('number-preview');
+            const numberList = document.getElementById('number-list');
+            const numberCount = document.getElementById('number-count');
+            const addButton = document.getElementById('add-button');
+            const clearNumbersBtn = document.getElementById('clear-numbers-btn');
+            const logsEl = document.getElementById('logs');
+            const clearLogsBtn = document.getElementById('clear-logs-btn');
+            const protectionStatus = document.getElementById('protection-status');
+            const protectionTimerContainer = document.getElementById('protection-timer-container');
+            const protectionTimer = document.getElementById('protection-timer');
+            const batchProgressContainer = document.getElementById('batch-progress-container');
+            const addedToday = document.getElementById('added-today');
+            const dailyLimit = document.getElementById('daily-limit');
+            const dailyRemaining = document.getElementById('daily-remaining');
+            const dailyProgress = document.getElementById('daily-progress');
+            const hourlyAdded = document.getElementById('hourly-added');
+            const hourlyLimit = document.getElementById('hourly-limit');
+            const hourlyRemaining = document.getElementById('hourly-remaining');
+            const hourlyProgress = document.getElementById('hourly-progress');
+            const noBatch = document.getElementById('no-batch');
+            const activeBatch = document.getElementById('active-batch');
+            const batchProgressValue = document.getElementById('batch-progress-value');
+            const batchProgressBar = document.getElementById('batch-progress-bar');
+            const batchProcessed = document.getElementById('batch-processed');
+            const batchTotal = document.getElementById('batch-total');
+            const resumeBatchBtn = document.getElementById('resume-batch-btn');
+            const failedNumbersBody = document.getElementById('failed-numbers-body');
+            const clearFailuresBtn = document.getElementById('clear-failures-btn');
+            const viewAllFailuresBtn = document.getElementById('view-all-failures-btn');
+            const batchPercent = document.getElementById('batch-percent');
+            const batchAdded = document.getElementById('batch-added');
+            const batchFailed = document.getElementById('batch-failed');
+            const batchEta = document.getElementById('batch-eta');
+            const detailedProgressBar = document.getElementById('detailed-progress-bar');
+            const operationStatus = document.getElementById('operation-status');
+            const settingsForm = document.getElementById('settings-form');
+            const saveSettingsBtn = document.getElementById('save-settings-btn');
+            const dailyLimitInput = document.getElementById('daily-limit-input');
+            const hourlyLimitInput = document.getElementById('hourly-limit-input');
+            const minDelayInput = document.getElementById('min-delay');
+            const maxDelayInput = document.getElementById('max-delay');
+            const maxBatchSizeInput = document.getElementById('max-batch-size');
+            const patternVariationCheckbox = document.getElementById('pattern-variation');
+            
+            // Diagnostics elements
+            const diagWhatsappStatus = document.getElementById('diag-whatsapp-status');
+            const diagSocketStatus = document.getElementById('diag-socket-status');
+            const diagProtectionStatus = document.getElementById('diag-protection-status');
+            const diagServerPort = document.getElementById('diag-server-port');
+            const diagSocketId = document.getElementById('diag-socket-id');
+            const diagSessionTime = document.getElementById('diag-session-time');
+            
+            // App state
+            const appState = {
+                connected: false,
+                socketConnected: false,
+                socketId: null,
+                serverPort: window.location.port || '80',
+                numbers: [],
+                protectionMode: false,
+                protectionResetTime: null,
+                sessionStartTime: new Date(),
+                addedToday: 0,
+                dailyLimit: 20000,
+                hourlyAdded: 0,
+                hourlyLimit: 1000,
+                dailyRemaining: 20000,
+                hourlyRemaining: 1000,
+                batchActive: false,
+                batchTotal: 0,
+                batchProcessed: 0,
+                batchProgress: 0,
+                batchAdded: 0,
+                batchFailed: 0,
+                batchSkipped: 0,
+                batchEta: null
+            };
+            
+            // Initialize Socket.IO connection
+            console.log('Initializing Socket.IO connection...');
+            
+            // Auto-detect the correct port
+            const protocol = window.location.protocol;
+            const hostname = window.location.hostname;
+            
+            // Use the current port first
+            let socketUrl = `${protocol}//${hostname}:${appState.serverPort}`;
+            
+            const socket = io(socketUrl, {
+                transports: ['websocket', 'polling'],
+                reconnection: true,
+                reconnectionAttempts: 5,
+                reconnectionDelay: 1000,
+                reconnectionDelayMax: 5000,
+                timeout: 10000,
+                autoConnect: true
+            });
+            
+            // Show toast messages
+            function showToast(message, type = 'info') {
+                const toastContainer = document.querySelector('.toast-container');
+                
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type} show`;
+                toast.setAttribute('role', 'alert');
+                toast.setAttribute('aria-live', 'assertive');
+                toast.setAttribute('aria-atomic', 'true');
+                
+                const toastHeader = document.createElement('div');
+                toastHeader.className = 'toast-header';
+                
+                let icon = 'info-circle';
+                let title = 'Information';
+                
+                switch(type) {
+                    case 'success':
+                        icon = 'check-circle';
+                        title = 'Success';
+                        break;
+                    case 'error':
+                        icon = 'exclamation-circle';
+                        title = 'Error';
+                        break;
+                }
+                
+                toastHeader.innerHTML = `
+                    <i class="fas fa-${icon} me-2"></i>
+                    <strong class="me-auto">${title}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                `;
+                
+                const toastBody = document.createElement('div');
+                toastBody.className = 'toast-body';
+                toastBody.textContent = message;
+                
+                toast.appendChild(toastHeader);
+                toast.appendChild(toastBody);
+                toastContainer.appendChild(toast);
+                
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        toastContainer.removeChild(toast);
+                    }, 300);
+                }, 5000);
+            }
+            
+            // Add log entry
+            function addLog(message, type = 'info') {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString();
+                
+                const logEntry = document.createElement('div');
+                logEntry.className = `log-entry log-${type}`;
+                
+                // Add appropriate icon based on log type
+                let icon = 'info-circle';
+                if (type === 'success') icon = 'check-circle';
+                else if (type === 'error') icon = 'exclamation-circle';
+                
+                logEntry.innerHTML = `<i class="fas fa-${icon} me-2"></i>[${timeStr}] ${message}`;
+                
+                logsEl.appendChild(logEntry);
+                logsEl.scrollTop = logsEl.scrollHeight;
+            }
+            
+            // Update connection status UI
+            function updateConnectionUI(connected) {
+                appState.connected = connected;
+                
+                if (connected) {
+                    connectionIndicator.classList.remove('status-disconnected');
+                    connectionIndicator.classList.add('status-connected');
+                    connectionStatus.textContent = 'Connected';
+                    diagWhatsappStatus.textContent = 'Connected';
+                    diagWhatsappStatus.className = 'text-success';
+                } else {
+                    connectionIndicator.classList.remove('status-connected');
+                    connectionIndicator.classList.add('status-disconnected');
+                    connectionStatus.textContent = 'Disconnected';
+                    diagWhatsappStatus.textContent = 'Disconnected';
+                    diagWhatsappStatus.className = 'text-danger';
+                }
+            }
+            
+            // Update protection status UI
+            function updateProtectionUI() {
+                if (appState.protectionMode) {
+                    protectionStatus.className = 'badge badge-protection-on';
+                    protectionStatus.textContent = 'Active';
+                    diagProtectionStatus.textContent = 'Enabled';
+                    diagProtectionStatus.className = 'text-danger';
+                    
+                    // Calculate and display remaining time
+                    if (appState.protectionResetTime) {
+                        protectionTimerContainer.style.display = 'block';
+                        updateProtectionTimer();
+                        // Set interval to update timer every second
+                        if (!window.protectionTimerInterval) {
+                            window.protectionTimerInterval = setInterval(updateProtectionTimer, 1000);
+                        }
+                    }
+                } else {
+                    protectionStatus.className = 'badge badge-protection-off';
+                    protectionStatus.textContent = 'Inactive';
+                    protectionTimerContainer.style.display = 'none';
+                    diagProtectionStatus.textContent = 'Disabled';
+                    diagProtectionStatus.className = 'text-success';
+                    
+                    // Clear interval if exists
+                    if (window.protectionTimerInterval) {
+                        clearInterval(window.protectionTimerInterval);
+                        window.protectionTimerInterval = null;
+                    }
+                }
+            }
+            
+            // Update protection timer
+            function updateProtectionTimer() {
+                if (!appState.protectionResetTime) return;
+                
+                const now = new Date();
+                const resetTime = new Date(appState.protectionResetTime);
+                const diffMs = resetTime - now;
+                
+                if (diffMs <= 0) {
+                    // Protection time has elapsed
+                    protectionTimer.textContent = '00:00';
+                    // Will be reset on next status update
+                    return;
+                }
+                
+                // Calculate minutes and seconds
+                const diffMinutes = Math.floor(diffMs / 60000);
+                const diffSeconds = Math.floor((diffMs % 60000) / 1000);
+                
+                // Format with leading zeros
+                const minutes = String(diffMinutes).padStart(2, '0');
+                const seconds = String(diffSeconds).padStart(2, '0');
+                
+                protectionTimer.textContent = `${minutes}:${seconds}`;
+            }
+            
+            // Update batch UI
+            function updateBatchUI() {
+                if (appState.batchActive) {
+                    noBatch.style.display = 'none';
+                    activeBatch.style.display = 'block';
+                    
+                    // Calculate progress percentage
+                    const progress = appState.batchTotal > 0 
+                        ? Math.round((appState.batchProcessed / appState.batchTotal) * 100) 
+                        : 0;
+                    
+                    batchProgressValue.textContent = `${progress}%`;
+                    batchProgressBar.style.width = `${progress}%`;
+                    batchProcessed.textContent = appState.batchProcessed;
+                    batchTotal.textContent = appState.batchTotal;
+                    
+                    // Update detailed batch progress
+                    batchPercent.textContent = `${progress}%`;
+                    batchAdded.textContent = appState.batchAdded;
+                    batchFailed.textContent = appState.batchFailed;
+                    detailedProgressBar.style.width = `${progress}%`;
+                    
+                    // Format ETA
+                    if (appState.batchEta) {
+                        const eta = new Date(appState.batchEta);
+                        batchEta.textContent = eta.toLocaleTimeString();
+                    } else {
+                        batchEta.textContent = 'Calculating...';
+                    }
+                    
+                    // Show resume button if needed
+                    if (appState.batchTotal > 0 && appState.batchProcessed < appState.batchTotal) {
+                        resumeBatchBtn.style.display = 'block';
+                    } else {
+                        resumeBatchBtn.style.display = 'none';
+                    }
+                } else {
+                    noBatch.style.display = 'block';
+                    activeBatch.style.display = 'none';
+                }
+            }
+            
+            // Update stats UI
+            function updateStatsUI() {
+                // Daily stats
+                addedToday.textContent = appState.addedToday;
+                dailyLimit.textContent = appState.dailyLimit;
+                dailyRemaining.textContent = appState.dailyRemaining;
+                const dailyPercentage = Math.round((appState.addedToday / appState.dailyLimit) * 100);
+                dailyProgress.style.width = `${dailyPercentage}%`;
+                
+                // Hourly stats
+                hourlyAdded.textContent = appState.hourlyAdded;
+                hourlyLimit.textContent = appState.hourlyLimit;
+                hourlyRemaining.textContent = appState.hourlyRemaining;
+                const hourlyPercentage = Math.round((appState.hourlyAdded / appState.hourlyLimit) * 100);
+                hourlyProgress.style.width = `${hourlyPercentage}%`;
+            }
+            
+            // Load failed numbers
+            function loadFailedNumbers() {
+                fetch('/api/failed-numbers')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Update the failed numbers table with the latest 5 entries
+                            const recentFailures = data.failedNumbers.slice(0, 5);
+                            
+                            if (recentFailures.length === 0) {
+                                failedNumbersBody.innerHTML = `
+                                    <tr>
+                                        <td colspan="2" class="text-center">No failed numbers</td>
+                                    </tr>
+                                `;
+                            } else {
+                                failedNumbersBody.innerHTML = '';
+                                
+                                recentFailures.forEach(item => {
+                                    const row = document.createElement('tr');
+                                    
+                                    row.innerHTML = `
+                                        <td>${item.number}</td>
+                                        <td>${item.reason.substring(0, 50)}${item.reason.length > 50 ? '...' : ''}</td>
+                                    `;
+                                    
+                                    failedNumbersBody.appendChild(row);
+                                });
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading failed numbers:', error);
+                    });
+            }
+            
+            // Parse phone numbers
+            function parsePhoneNumbers(text) {
+                if (!text) return [];
+                return text.split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line && /^\d+$/.test(line));
+            }
+            
+            // Update number preview
+            function updateNumberPreview(numbers) {
+                appState.numbers = numbers;
+                
+                if (numbers.length > 0) {
+                    numberPreview.classList.remove('d-none');
+                    numberCount.textContent = numbers.length;
+                    
+                    // Show preview of numbers
+                    numberList.innerHTML = '';
+                    numbers.slice(0, 20).forEach(number => {
+                        const div = document.createElement('div');
+                        div.textContent = number;
+                        numberList.appendChild(div);
+                    });
+                    
+                    if (numbers.length > 20) {
+                        const div = document.createElement('div');
+                        div.className = 'text-muted mt-1';
+                        div.textContent = `... and ${numbers.length - 20} more`;
+                        numberList.appendChild(div);
+                    }
+                } else {
+                    numberPreview.classList.add('d-none');
+                }
+            }
+            
+            // Update app status from server
+            function updateStatus() {
+                fetch('/api/status')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            updateConnectionUI(data.clientReady);
+                            
+                            // Update app state with latest data
+                            appState.addedToday = data.addedToday;
+                            appState.dailyLimit = data.dailyLimit;
+                            appState.dailyRemaining = data.remaining;
+                            appState.hourlyAdded = data.hourlyAdded;
+                            appState.hourlyLimit = data.hourlyLimit;
+                            appState.hourlyRemaining = data.hourlyRemaining;
+                            appState.protectionMode = data.protectionMode;
+                            appState.protectionResetTime = data.protectionResetTime;
+                            
+                            // Update batch status
+                            if (data.currentBatchSize > 0) {
+                                appState.batchActive = true;
+                                appState.batchTotal = data.currentBatchSize;
+                                appState.batchProcessed = data.currentBatchProgress;
+                            } else {
+                                appState.batchActive = false;
+                            }
+                            
+                            // Update UI
+                            updateStatsUI();
+                            updateProtectionUI();
+                            updateBatchUI();
+                            
+                            // Update settings form
+                            dailyLimitInput.value = data.dailyLimit;
+                            hourlyLimitInput.value = data.hourlyLimit;
+                            
+                            // Update diagnostics
+                            diagSessionTime.textContent = appState.sessionStartTime.toLocaleString();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching status:', error);
+                    });
+            }
+            
+            // Add member to group
+            function addMembersToGroup(groupId, numbers, message = '') {
+                addButton.disabled = true;
+                
+                // Show batch progress container
+                batchProgressContainer.style.display = 'block';
+                
+                // Reset batch counters
+                appState.batchAdded = 0;
+                appState.batchFailed = 0;
+                appState.batchSkipped = 0;
+                
+                fetch('/api/add-members', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        groupId,
+                        numbers,
+                        message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        appState.batchAdded = data.added;
+                        appState.batchFailed = data.failed;
+                        appState.batchSkipped = data.skipped;
+                        
+                        addLog(`Added ${data.added} members, failed ${data.failed}, skipped ${data.skipped}`, 'success');
+                        showToast(`Added ${data.added} members successfully!`, 'success');
+                        
+                        // Process details if available
+                        if (data.details && data.details.length > 0) {
+                            // Log a sample of the results
+                            const sampleSize = Math.min(5, data.details.length);
+                            const sample = data.details.slice(0, sampleSize);
+                            
+                            sample.forEach(detail => {
+                                const status = detail.status === 'added' ? 'success' : 
+                                            detail.status === 'failed' ? 'error' : 'info';
+                                addLog(`${detail.number}: ${detail.status} - ${detail.reason}`, status);
+                            });
+                            
+                            if (data.details.length > sampleSize) {
+                                addLog(`... and ${data.details.length - sampleSize} more results`, 'info');
+                            }
+                        }
+                        
+                        // Update batch data if available
+                        if (data.batch) {
+                            appState.batchTotal = data.batch.total;
+                            appState.batchProcessed = data.batch.processed;
+                            appState.batchEta = data.batch.estimatedCompletion;
+                            appState.batchActive = true;
+                            updateBatchUI();
+                        }
+                        
+                        // Check if operation has a message (e.g., protection mode activated)
+                        if (data.message) {
+                            operationStatus.innerHTML = `<div class="alert alert-info">${data.message}</div>`;
+                        } else {
+                            operationStatus.innerHTML = `<div class="alert alert-success">Batch processing completed successfully!</div>`;
+                        }
+                        
+                        // Refresh status data
+                        updateStatus();
+                        loadFailedNumbers();
+                    } else {
+                        addLog(`Error: ${data.message}`, 'error');
+                        showToast(data.message, 'error');
+                        operationStatus.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+                    }
+                })
+                .catch(error => {
+                    addLog(`Request error: ${error.message}`, 'error');
+                    showToast('Error occurred while adding members', 'error');
+                    operationStatus.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+                })
+                .finally(() => {
+                    // Re-enable button
+                    addButton.disabled = false;
+                });
+            }
+            
+            // Handle form submission
+            addMembersForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!appState.connected) {
+                    showToast('WhatsApp not connected. Please scan the QR code first.', 'error');
+                    addLog('WhatsApp not connected. Please scan the QR code first.', 'error');
+                    return;
+                }
+                
+                const groupId = groupIdInput.value.trim();
+                const greeting = greetingMessage.value.trim();
+                
+                if (!groupId) {
+                    showToast('Group ID or invitation link is required', 'error');
+                    return;
+                }
+                
+                if (appState.numbers.length === 0) {
+                    showToast('No phone numbers to add', 'error');
+                    return;
+                }
+                
+                // Check for protection mode
+                if (appState.protectionMode) {
+                    const resetTime = new Date(appState.protectionResetTime);
+                    const waitMins = Math.ceil((resetTime - new Date()) / (60 * 1000));
+                    
+                    if (!confirm(`Protection mode is active. This will be automatically cleared in ${waitMins} minutes. Are you sure you want to add members now?`)) {
+                        return;
+                    }
+                }
+                
+                // Start adding members
+                addLog(`Starting to add ${appState.numbers.length} members to group ${groupId}...`, 'info');
+                addMembersToGroup(groupId, appState.numbers, greeting);
+            });
+            
+            // Resume batch
+            resumeBatchBtn.addEventListener('click', function() {
+                if (!appState.connected) {
+                    showToast('WhatsApp not connected. Please scan the QR code first.', 'error');
+                    return;
+                }
+                
+                fetch('/api/resume-batch', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        addLog('Batch resumed successfully', 'success');
+                        showToast('Batch resumed successfully', 'success');
+                        
+                        // Update batch data if available
+                        if (data.batch) {
+                            appState.batchTotal = data.batch.total;
+                            appState.batchProcessed = data.batch.processed;
+                            appState.batchEta = data.batch.estimatedCompletion;
+                            appState.batchActive = true;
+                            updateBatchUI();
+                        }
+                        
+                        // Show batch progress container
+                        batchProgressContainer.style.display = 'block';
+                        
+                        // Update operation status
+                        operationStatus.innerHTML = `<div class="alert alert-info">Batch processing resumed...</div>`;
+                    } else {
+                        addLog(`Error resuming batch: ${data.message}`, 'error');
+                        showToast(data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    addLog(`Failed to resume batch: ${error.message}`, 'error');
+                    showToast('Error occurred while resuming batch', 'error');
+                });
+            });
+            
+            // Handle phone numbers input
+            phoneNumbersInput.addEventListener('input', function() {
+                const numbers = parsePhoneNumbers(this.value);
+                updateNumberPreview(numbers);
+            });
+            
+            // Handle CSV file upload
+            csvFileInput.addEventListener('change', function() {
+                if (this.files.length === 0) {
+                    return;
+                }
+                
+                const file = this.files[0];
+                if (file.type !== 'text/csv') {
+                    showToast('Please upload a CSV file', 'error');
+                    return;
+                }
+                
+                // Create FormData and upload CSV
+                const formData = new FormData();
+                formData.append('csv', file);
+                
+                // Show loading state
+                numberPreview.classList.add('d-none');
+                addLog('Processing CSV file...', 'info');
+                
+                fetch('/api/upload-csv', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        addLog(`CSV processed: ${data.count} valid numbers found`, 'success');
+                        showToast(`${data.count} valid numbers found in CSV`, 'success');
+                        updateNumberPreview(data.numbers);
+                    } else {
+                        addLog(`Error processing CSV: ${data.message}`, 'error');
+                        showToast(data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    addLog(`CSV upload error: ${error.message}`, 'error');
+                    showToast('Error uploading CSV file', 'error');
+                });
+            });
+            
+            // Handle clear numbers button
+            clearNumbersBtn.addEventListener('click', function() {
+                phoneNumbersInput.value = '';
+                csvFileInput.value = '';
+                updateNumberPreview([]);
+            });
+            
+            // Handle clear logs button
+            clearLogsBtn.addEventListener('click', function() {
+                logsEl.innerHTML = '';
+            });
+            
+            // Handle clear failures button
+            clearFailuresBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all failed number records?')) {
+                    fetch('/api/clear-failed-numbers', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            addLog('Failed numbers cleared', 'success');
+                            showToast('Failed numbers cleared', 'success');
+                            loadFailedNumbers();
+                        }
+                    })
+                    .catch(error => {
+                        addLog(`Error clearing failed numbers: ${error.message}`, 'error');
+                        showToast('Error clearing failed numbers', 'error');
+                    });
+                }
+            });
+            
+            // Handle save settings button
+            saveSettingsBtn.addEventListener('click', function() {
+                const dailyLimit = parseInt(dailyLimitInput.value);
+                const hourlyLimit = parseInt(hourlyLimitInput.value);
+                const minDelay = parseInt(minDelayInput.value);
+                const maxDelay = parseInt(maxDelayInput.value);
+                const maxBatchSize = parseInt(maxBatchSizeInput.value);
+                const patternVariation = patternVariationCheckbox.checked;
+                
+                if (minDelay >= maxDelay) {
+                    showToast('Minimum delay must be less than maximum delay', 'error');
+                    return;
+                }
+                
+                fetch('/api/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        dailyLimit,
+                        hourlyLimit,
+                        minDelay,
+                        maxDelay,
+                        maxBatchSize,
+                        patternVariation
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showToast('Settings saved successfully', 'success');
+                        addLog('Configuration updated successfully', 'success');
+                        
+                        // Update local state
+                        appState.dailyLimit = data.config.dailyLimit;
+                        appState.hourlyLimit = data.config.hourlyLimit;
+                        
+                        // Update UI
+                        updateStatsUI();
+                        
+                        // Close modal
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('settingsModal'));
+                        if (modal) {
+                            modal.hide();
+                        }
+                    } else {
+                        showToast(`Error: ${data.message}`, 'error');
+                        addLog(`Error updating configuration: ${data.message}`, 'error');
+                    }
+                })
+                .catch(error => {
+                    showToast('Error saving settings', 'error');
+                    addLog(`Error saving settings: ${error.message}`, 'error');
+                });
+            });
+            
+            // Handle protection status click
+            protectionStatus.addEventListener('click', function() {
+                if (!appState.protectionMode) return;
+                
+                if (confirm('Are you sure you want to disable protection mode? This is not recommended unless absolutely necessary.')) {
+                    fetch('/api/reset-protection', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showToast('Protection mode disabled', 'success');
+                            addLog('Protection mode reset successfully', 'success');
+                            appState.protectionMode = false;
+                            updateProtectionUI();
+                        }
+                    })
+                    .catch(error => {
+                        showToast('Error disabling protection mode', 'error');
+                        addLog(`Error resetting protection mode: ${error.message}`, 'error');
+                    });
+                }
+            });
+            
+            // Handle refresh QR button
+            refreshQrBtn.addEventListener('click', function() {
+                qrcodeEl.innerHTML = `
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Requesting new QR code...</p>
+                `;
+                
+                // Request a new QR code
+                socket.emit('request-qr-refresh');
+                addLog('Requesting a new QR code...', 'info');
+            });
+            
+            // Socket.IO event handlers
+            socket.on('connect', function() {
+                console.log('Socket.IO connected successfully!');
+                addLog('Connected to server', 'success');
+                
+                appState.socketConnected = true;
+                appState.socketId = socket.id;
+                
+                // Update diagnostics
+                diagSocketStatus.textContent = 'Connected';
+                diagSocketStatus.className = 'text-success';
+                diagSocketId.textContent = socket.id;
+                diagServerPort.textContent = appState.serverPort;
+                
+                // Request status update
+                updateStatus();
+                
+                // Load failed numbers
+                loadFailedNumbers();
+                
+                // Request a fresh QR code on connection
+                setTimeout(() => {
+                    console.log('Requesting QR code after successful connection');
+                    socket.emit('request-qr-refresh');
+                    addLog('Requesting QR code from server', 'info');
+                }, 1000);
+            });
+            
+            socket.on('socket-connected', function(data) {
+                console.log('Socket explicitly confirmed connected:', data);
+                appState.socketId = data.socketId;
+                diagSocketId.textContent = data.socketId;
+            });
+            
+            socket.on('connect_error', function(error) {
+                console.error('Socket.IO connection error:', error.message);
+                addLog(`Connection error: ${error.message}`, 'error');
+                appState.socketConnected = false;
+                
+                // Update diagnostics
+                diagSocketStatus.textContent = 'Disconnected (Error)';
+                diagSocketStatus.className = 'text-danger';
+            });
+            
+            socket.on('disconnect', function(reason) {
+                console.log(`Socket.IO disconnected: ${reason}`);
+                addLog(`Disconnected from server: ${reason}`, 'error');
+                appState.socketConnected = false;
+                
+                // Update diagnostics
+                diagSocketStatus.textContent = 'Disconnected';
+                diagSocketStatus.className = 'text-danger';
+            });
+            
+            socket.on('qr-code', function(data) {
+                console.log('QR code data received');
+                addLog('QR code received from server', 'info');
+                
+                if (!data || !data.qr) {
+                    qrcodeEl.innerHTML = `<p>Error: Invalid QR data received</p>`;
+                    addLog('Error: Received invalid QR data from server', 'error');
+                    return;
+                }
+                
+                // Clear previous content
+                qrcodeEl.innerHTML = '';
+                
+                try {
+                    // Generate QR code
+                    QRCode.toCanvas(qrcodeEl, data.qr, { width: 256 }, function(error) {
+                        if (error) {
+                            qrcodeEl.innerHTML = `<p class="text-danger">Error generating QR code: ${error}</p>`;
+                            addLog(`Error generating QR code: ${error}`, 'error');
+                        } else {
+                            addLog('WhatsApp QR code displayed successfully', 'success');
+                        }
+                    });
+                } catch (err) {
+                    qrcodeEl.innerHTML = `<p class="text-danger">Exception while generating QR code: ${err.message}</p>`;
+                    addLog(`Exception while generating QR code: ${err.message}`, 'error');
+                }
+            });
+            
+            socket.on('whatsapp-status', function(data) {
+                updateConnectionUI(data.connected);
+                
+                if (data.connected) {
+                    addLog('WhatsApp connected successfully!', 'success');
+                    
+                    // Hide QR code container after connection
+                    const connectionInfo = document.getElementById('connection-info');
+                    if (connectionInfo) {
+                        connectionInfo.innerHTML = `
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> WhatsApp connected successfully!
+                                <p class="mb-0 mt-2">You can now add members to your groups.</p>
+                            </div>
+                        `;
+                    }
+                } else {
+                    addLog(`WhatsApp disconnected${data.reason ? ': ' + data.reason : ''}`, 'error');
+                    
+                    // Show reconnection info
+                    const connectionInfo = document.getElementById('connection-info');
+                    if (connectionInfo) {
+                        connectionInfo.innerHTML = `
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i> WhatsApp disconnected${data.reason ? ': ' + data.reason : ''}
+                                <p class="mb-0 mt-2">Please scan the QR code again to reconnect.</p>
+                            </div>
+                        `;
+                    }
+                }
+            });
+            
+            socket.on('stats-update', function(data) {
+                // Update app state
+                appState.addedToday = data.addedToday;
+                appState.dailyLimit = data.dailyLimit;
+                appState.dailyRemaining = data.dailyLimit - data.addedToday;
+                appState.hourlyAdded = data.hourlyAdded;
+                appState.hourlyLimit = data.hourlyLimit;
+                appState.hourlyRemaining = data.hourlyLimit - data.hourlyAdded;
+                appState.protectionMode = data.protectionMode;
+                appState.protectionResetTime = data.protectionResetTime;
+                
+                // Update UI
+                updateStatsUI();
+                updateProtectionUI();
+            });
+            
+            socket.on('batch-progress', function(data) {
+                // Update batch progress
+                if (data) {
+                    appState.batchActive = true;
+                    appState.batchTotal = data.total;
+                    appState.batchProcessed = data.processed;
+                    appState.batchEta = data.estimatedCompletion;
+                    updateBatchUI();
+                }
+            });
+            
+            // Initial UI setup
+            addLog('WhatsApp Group Manager Pro loaded', 'info');
+            addLog('Waiting for server connection...', 'info');
+            
+            // Set periodic status updates (every 30 seconds)
+            setInterval(updateStatus, 30000);
+        });
+    </script>
+</body>
+</html>

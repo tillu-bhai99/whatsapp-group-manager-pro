@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Connection Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #128C7E;
+            text-align: center;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .log-container {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .log-info {
+            color: #0066cc;
+        }
+        .log-success {
+            color: #2e7d32;
+        }
+        .log-error {
+            color: #c62828;
+        }
+        .qr-container {
+            text-align: center;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #128C7E;
+        }
+        .port-status {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .port-indicator {
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: #f5f5f5;
+            font-size: 14px;
+        }
+        .connecting {
+            background-color: #fff9c4;
+        }
+        .connected {
+            background-color: #c8e6c9;
+        }
+        .failed {
+            background-color: #ffcdd2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Socket.IO Connection Test</h1>
+    
+    <div class="card">
+        <h2>Connection Status</h2>
+        <div id="port-status" class="port-status">
+            <div class="port-indicator" id="status-current">Current Port: Waiting...</div>
+            <div class="port-indicator" id="status-3000">Port 3000: Not Tried</div>
+            <div class="port-indicator" id="status-3001">Port 3001: Not Tried</div>
+            <div class="port-indicator" id="status-3002">Port 3002: Not Tried</div>
+            <div class="port-indicator" id="status-8080">Port 8080: Not Tried</div>
+        </div>
+        <div>Status: <span id="connection-status">Disconnected</span></div>
+        <div>Current Port: <span id="current-port">None</span></div>
+        <button id="reconnect-btn" class="btn">Reconnect</button>
+        <button id="request-qr-btn" class="btn" disabled>Request QR Code</button>
+    </div>
+    
+    <div class="card">
+        <h2>QR Code</h2>
+        <div id="qr-container" class="qr-container">
+            <p id="qr-message">Waiting for QR code...</p>
+            <div id="qr-code"></div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>Connection Logs</h2>
+        <div id="logs" class="log-container"></div>
+        <button id="clear-logs-btn" class="btn">Clear Logs</button>
+    </div>
+
+    <!-- Socket.IO and QR Code libraries -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const logsEl = document.getElementById('logs');
+            const qrContainer = document.getElementById('qr-container');
+            const qrCode = document.getElementById('qr-code');
+            const qrMessage = document.getElementById('qr-message');
+            const connectionStatus = document.getElementById('connection-status');
+            const currentPort = document.getElementById('current-port');
+            const reconnectBtn = document.getElementById('reconnect-btn');
+            const requestQrBtn = document.getElementById('request-qr-btn');
+            const clearLogsBtn = document.getElementById('clear-logs-btn');
+            
+            // Socket.IO instance
+            let socket = null;
+            
+            // Connection variables
+            let connectionAttempts = 0;
+            const maxConnectionAttempts = 10;
+            let portOptions = [];
+            let currentPortIndex = 0;
+            let portStatuses = {};
+            
+            // Function to add log entry
+            function addLog(message, type = 'info') {
+                const now = new Date();
+                const timeStr = now.toTimeString().split(' ')[0];
+                
+                const logEntry = document.createElement('div');
+                logEntry.className = `log-entry log-${type}`;
+                logEntry.textContent = `[${timeStr}] ${message}`;
+                
+                logsEl.appendChild(logEntry);
+                logsEl.scrollTop = logsEl.scrollHeight;
+                
+                console.log(`[${type.toUpperCase()}] ${message}`);
+            }
+            
+            // Function to update port status indicators
+            function updatePortStatus(port, status) {
+                portStatuses[port] = status;
+                
+                const portEl = document.getElementById(`status-${port === 'current' ? 'current' : port}`);
+                if (portEl) {
+                    portEl.className = 'port-indicator';
+                    portEl.classList.add(status);
+                    
+                    let label = port === 'current' ? 'Current Port' : `Port ${port}`;
+                    let statusText = '';
+                    
+                    switch(status) {
+                        case 'connecting':
+                            statusText = 'Connecting...';
+                            break;
+                        case 'connected':
+                            statusText = 'Connected!';
+                            break;
+                        case 'failed':
+                            statusText = 'Failed';
+                            break;
+                        default:
+                            statusText = 'Not Tried';
+                    }
+                    
+                    portEl.textContent = `${label}: ${statusText}`;
+                }
+            }
+            
+            // Initialize port detection
+            function detectServerPorts() {
+                // Reset connection variables
+                connectionAttempts = 0;
+                currentPortIndex = 0;
+                
+                // Reset UI
+                connectionStatus.textContent = 'Disconnected';
+                currentPort.textContent = 'None';
+                requestQrBtn.disabled = true;
+                qrCode.innerHTML = '';
+                qrMessage.textContent = 'Waiting for QR code...';
+                
+                // Extract current port from location
+                const browserPort = window.location.port || '80';
+                
+                // Define ports to try
+                portOptions = [
+                    browserPort,   // Current browser port
+                    '3000',        // Default node port
+                    '3001',        // Alternative port 1
+                    '3002',        // Alternative port 2
+                    '8080'         // Common alternative port
+                ];
+                
+                // Remove duplicates
+                portOptions = [...new Set(portOptions)];
+                
+                addLog(`Will try these ports: ${portOptions.join(', ')}`);
+                
+                // Reset port statuses
+                portOptions.forEach(port => {
+                    updatePortStatus(port, 'not-tried');
+                });
+                
+                // Start trying ports
+                tryNextPort();
+            }
+            
+            // Try to connect to the next port
+            function tryNextPort() {
+                if (connectionAttempts >= maxConnectionAttempts) {
+                    addLog('Maximum connection attempts reached. Please try again later.', 'error');
+                    connectionStatus.textContent = 'Failed - Max Attempts';
+                    return;
+                }
+                
+                // If we've tried all ports, restart from the beginning
+                if (currentPortIndex >= portOptions.length) {
+                    currentPortIndex = 0;
+                }
+                
+                const port = portOptions[currentPortIndex];
+                connectionAttempts++;
+                currentPortIndex++;
+                
+                addLog(`Connection attempt ${connectionAttempts}/${maxConnectionAttempts} on port ${port}`, 'info');
+                connectionStatus.textContent = `Connecting to port ${port}...`;
+                currentPort.textContent = port;
+                
+                // Update port status
+                updatePortStatus(port, 'connecting');
+                
+                // Close existing socket if present
+                if (socket) {
+                    socket.close();
+                }
+                
+                // Create connection URL
+                const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+                const hostname = window.location.hostname;
+                const serverUrl = `${protocol}//${hostname}:${port}`;
+                
+                addLog(`Trying to connect to: ${serverUrl}`);
+                
+                try {
+                    // Create new socket with explicit configuration
+                    socket = io(serverUrl, {
+                        reconnection: true,
+                        reconnectionAttempts: 3,
+                        reconnectionDelay: 1000,
+                        timeout: 5000,
+                        transports: ['websocket', 'polling'],
+                        forceNew: true,
+                        autoConnect: true
+                    });
+                    
+                    // Setup event handlers
+                    socket.on('connect', function() {
+                        addLog(`Successfully connected to server on port ${port}!`, 'success');
+                        connectionStatus.textContent = 'Connected';
+                        requestQrBtn.disabled = false;
+                        
+                        // Update port status
+                        updatePortStatus(port, 'connected');
+                        
+                        // Request QR code after connection
+                        setTimeout(() => {
+                            requestQRCode();
+                        }, 500);
+                    });
+                    
+                    socket.on('connect_error', function(error) {
+                        addLog(`Connection error on port ${port}: ${error.message}`, 'error');
+                        updatePortStatus(port, 'failed');
+                        
+                        // Try next port after a delay
+                        setTimeout(() => {
+                            tryNextPort();
+                        }, 1000);
+                    });
+                    
+                    socket.on('connect_timeout', function() {
+                        addLog(`Connection timed out on port ${port}`, 'error');
+                        updatePortStatus(port, 'failed');
+                        
+                        // Try next port
+                        setTimeout(() => {
+                            tryNextPort();
+                        }, 500);
+                    });
+                    
+                    socket.on('disconnect', function(reason) {
+                        addLog(`Disconnected from server: ${reason}`, 'error');
+                        connectionStatus.textContent = 'Disconnected';
+                        requestQrBtn.disabled = true;
+                        
+                        // Try to reconnect automatically for certain disconnect reasons
+                        if (reason === 'io server disconnect' || reason === 'transport close') {
+                            addLog('Attempting to reconnect...', 'info');
+                            socket.connect();
+                        }
+                    });
+                    
+                    // QR code handling
+                    socket.on('qr-code', function(data) {
+                        addLog('QR code received from server!', 'success');
+                        
+                        if (!data || !data.qr) {
+                            addLog('Received QR data is invalid', 'error');
+                            qrMessage.textContent = 'Error: Invalid QR data received';
+                            return;
+                        }
+                        
+                        // Display QR code
+                        qrCode.innerHTML = '';
+                        qrMessage.textContent = '';
+                        
+                        try {
+                            QRCode.toCanvas(qrCode, data.qr, {
+                                width: 256,
+                                margin: 4,
+                                color: {
+                                    dark: '#128C7E',
+                                    light: '#FFFFFF'
+                                }
+                            }, function(error) {
+                                if (error) {
+                                    addLog(`Error generating QR code: ${error}`, 'error');
+                                    qrMessage.textContent = 'Error generating QR code';
+                                } else {
+                                    addLog('QR code displayed successfully', 'success');
+                                }
+                            });
+                        } catch (err) {
+                            addLog(`Exception generating QR code: ${err.message}`, 'error');
+                            qrMessage.textContent = `Error: ${err.message}`;
+                        }
+                    });
+                    
+                    socket.on('show-qr', function() {
+                        addLog('Received instruction to show QR code', 'info');
+                    });
+                    
+                    socket.on('awaiting-qr', function() {
+                        addLog('Server is preparing a new QR code', 'info');
+                        qrCode.innerHTML = '';
+                        qrMessage.textContent = 'Server is preparing a new QR code...';
+                    });
+                    
+                    // Set a timeout for this connection attempt
+                    setTimeout(() => {
+                        if (!socket.connected) {
+                            addLog(`Connection attempt to port ${port} timed out`, 'error');
+                            updatePortStatus(port, 'failed');
+                            tryNextPort();
+                        }
+                    }, 5000);
+                    
+                } catch (err) {
+                    addLog(`Error creating socket: ${err.message}`, 'error');
+                    updatePortStatus(port, 'failed');
+                    
+                    // Try next port after a short delay
+                    setTimeout(() => {
+                        tryNextPort();
+                    }, 500);
+                }
+            }
+            
+            // Function to request a new QR code
+            function requestQRCode() {
+                if (socket && socket.connected) {
+                    addLog('Requesting new QR code from server', 'info');
+                    socket.emit('request-qr-refresh');
+                    
+                    qrCode.innerHTML = '';
+                    qrMessage.textContent = 'Requesting new QR code...';
+                } else {
+                    addLog('Cannot request QR code - not connected', 'error');
+                }
+            }
+            
+            // Event listeners
+            reconnectBtn.addEventListener('click', function() {
+                addLog('Manual reconnection initiated', 'info');
+                detectServerPorts();
+            });
+            
+            requestQrBtn.addEventListener('click', function() {
+                requestQRCode();
+            });
+            
+            clearLogsBtn.addEventListener('click', function() {
+                logsEl.innerHTML = '';
+            });
+            
+            // Start the connection process
+            addLog('Socket.IO connection test page loaded', 'info');
+            addLog('Starting automatic port detection...', 'info');
+            detectServerPorts();
+        });
+    </script>
+</body>
+</html>

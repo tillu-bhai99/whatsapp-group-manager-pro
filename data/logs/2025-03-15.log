@@ -1,0 +1,257 @@
+[08:38:10] [ERROR] UNHANDLED REJECTION: Error: LocalAuth is not compatible with a user-supplied userDataDir.
+[08:38:10] [ERROR] Stack trace: Error: LocalAuth is not compatible with a user-supplied userDataDir.
+    at LocalAuth.beforeBrowserInitialized (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\authStrategies\LocalAuth.js:32:19)
+    at Client.initialize (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\Client.js:291:33)
+    at Object.<anonymous> (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1339:8)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49
+[08:40:31] [ERROR] UNCAUGHT EXCEPTION: listen EADDRINUSE: address already in use :::3000
+[08:40:31] [ERROR] Stack trace: Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at Function.listen (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1341:5)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+    at node:internal/main/run_main_module:36:49
+[08:40:31] [INFO] Application will continue running despite the error
+[08:40:38] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+[08:40:38] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[08:40:38] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[08:40:43] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[08:44:54] [SUCCESS] Server running on http://localhost:3000
+[08:45:00] [INFO] QR code received. Ready for scanning.
+[08:46:00] [INFO] QR code received. Ready for scanning.
+[08:46:20] [INFO] QR code received. Ready for scanning.
+[08:46:40] [INFO] QR code received. Ready for scanning.
+[08:47:00] [INFO] QR code received. Ready for scanning.
+[08:47:20] [INFO] QR code received. Ready for scanning.
+[08:47:20] [ERROR] WhatsApp client disconnected: Max qrcode retries reached
+[08:47:25] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[08:47:32] [INFO] QR code received. Ready for scanning.
+[08:47:47] [SUCCESS] Successfully authenticated with WhatsApp
+[08:47:54] [SUCCESS] WhatsApp client is ready and connected!
+[08:50:25] [INFO] Treating as group ID: 120363413164388361@g.us
+[09:05:49] [INFO] Treating as group ID: 120363413164388361@g.us
+[09:05:53] [INFO] Treating as group ID: 120363413164388361@g.us
+[09:06:04] [INFO] Treating as group ID: 7489812219-1742028783@c.us
+[09:06:04] [ERROR] Failed to verify group ID 7489812219-1742028783@c.us: Evaluation failed: Error: wid error: invalid wid
+    at new Error (<anonymous>:6:31)
+    at h (https://static.whatsapp.net/rsrc.php/v4/ya/r/AiQnYbdNg93.js:71:191)
+    at new a (https://static.whatsapp.net/rsrc.php/v4/yL/r/B1Cu8_s_R3s.js:141:1583)
+    at Object.o [as createWid] (https://static.whatsapp.net/rsrc.php/v4/yL/r/B1Cu8_s_R3s.js:143:847)
+    at window.WWebJS.getChat (pptr://__puppeteer_evaluation_script__:480:49)
+    at pptr://__puppeteer_evaluation_script__:2:40
+[09:06:24] [INFO] Detected group ID: 7489812219-1742028783@g.us
+[09:56:19] [INFO] Connection state changed to: OPENING
+[14:05:47] [SUCCESS] Server running on http://localhost:3000
+[14:22:06] [WARNING] Port 3000 is already in use, trying alternative port...
+[14:22:06] [SUCCESS] Server running on http://localhost:3001
+[14:22:34] [SUCCESS] Server running on http://localhost:3000
+[15:12:20] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:12:20] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:12:20] [WARNING] Port 3001 is already in use, trying alternative port...
+[15:12:20] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:12:20] [ERROR] UNCAUGHT EXCEPTION: Listen method has been called more than once without closing.
+[15:12:20] [ERROR] Stack trace: Error [ERR_SERVER_ALREADY_LISTEN]: Listen method has been called more than once without closing.
+    at Server.listen (node:net:2041:11)
+    at startServer (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1405:12)
+    at Server.<anonymous> (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1412:13)
+    at Server.emit (node:events:530:35)
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[15:12:20] [INFO] Application will continue running despite the error
+[15:12:20] [SUCCESS] Server running on http://localhost:3002
+[15:12:20] [SUCCESS] Server running on http://localhost:3002
+[15:12:20] [SUCCESS] Server running on http://localhost:3002
+[15:12:20] [SUCCESS] Server running on http://localhost:3002
+[15:12:32] [INFO] New client connected to web interface
+[15:12:38] [INFO] Client disconnected from web interface
+[15:13:36] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[15:13:36] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[15:13:36] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[15:14:01] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:14:01] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:14:01] [WARNING] Port 3001 is already in use, trying alternative port...
+[15:14:01] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:14:01] [ERROR] UNCAUGHT EXCEPTION: Listen method has been called more than once without closing.
+[15:14:01] [ERROR] Stack trace: Error [ERR_SERVER_ALREADY_LISTEN]: Listen method has been called more than once without closing.
+    at Server.listen (node:net:2041:11)
+    at startServer (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1405:12)
+    at Server.<anonymous> (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1412:13)
+    at Server.emit (node:events:530:35)
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[15:14:01] [INFO] Application will continue running despite the error
+[15:14:01] [SUCCESS] Server running on http://localhost:3002
+[15:14:01] [SUCCESS] Server running on http://localhost:3002
+[15:14:01] [SUCCESS] Server running on http://localhost:3002
+[15:14:01] [SUCCESS] Server running on http://localhost:3002
+[15:14:15] [INFO] New client connected to web interface
+[15:14:21] [INFO] Client disconnected from web interface
+[15:15:08] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[15:15:08] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[15:15:08] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[15:16:36] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[15:16:36] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[15:16:36] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[15:16:36] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[15:16:36] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[15:16:36] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[15:16:41] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[15:16:41] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[15:16:50] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+[15:16:50] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Execution context was destroyed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[15:16:50] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[15:17:21] [SUCCESS] Server running on http://localhost:3000
+[15:17:25] [ERROR] UNHANDLED REJECTION: ProtocolError: Could not load body for this request. This might happen if the request is a preflight request.
+[15:17:25] [ERROR] Stack trace: ProtocolError: Could not load body for this request. This might happen if the request is a preflight request.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\HTTPResponse.js:148:31
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:555:9)
+    at process.processTimers (node:internal/timers:529:7)
+    at async HTTPResponse.text (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\HTTPResponse.js:160:25)
+    at async C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\Client.js:786:39
+[15:17:30] [INFO] QR code received. Ready for scanning.
+[15:17:36] [INFO] New client connected to web interface
+[15:17:42] [INFO] Client disconnected from web interface
+[15:18:03] [INFO] New client connected to web interface
+[15:18:09] [INFO] Client disconnected from web interface
+[15:18:09] [INFO] New client connected to web interface
+[15:18:10] [INFO] Client disconnected from web interface
+[15:18:10] [INFO] New client connected to web interface
+[15:18:29] [INFO] QR code received. Ready for scanning.
+[15:18:49] [INFO] QR code received. Ready for scanning.
+[15:19:09] [INFO] QR code received. Ready for scanning.
+[15:19:26] [SUCCESS] Successfully authenticated with WhatsApp
+[15:19:33] [SUCCESS] WhatsApp client is ready and connected!
+[15:19:34] [INFO] Client disconnected from web interface
+[15:19:34] [INFO] New client connected to web interface
+[15:20:31] [INFO] Treating as group ID: 120363413164388361@g.us
+[15:22:17] [INFO] New client connected to web interface
+[15:22:22] [INFO] Treating as group ID: 120363413164388361@g.us
+[15:22:22] [INFO] Client disconnected from web interface
+[15:35:50] [INFO] New client connected to web interface
+[15:35:56] [INFO] Client disconnected from web interface
+[15:36:44] [INFO] Client disconnected from web interface
+[15:36:45] [INFO] New client connected to web interface
+[15:37:15] [INFO] Treating as group ID: 120363413164388361@g.us
+[15:40:39] [SUCCESS] Server running on http://localhost:3000
+[15:40:39] [INFO] New client connected to web interface
+[15:40:55] [INFO] New client connected to web interface
+[15:41:01] [INFO] Client disconnected from web interface
+[15:41:12] [INFO] Client disconnected from web interface
+[15:41:42] [INFO] New client connected to web interface
+[15:41:47] [INFO] Client disconnected from web interface
+[15:43:23] [INFO] New client connected to web interface
+[15:46:44] [WARNING] Port 3000 is already in use, trying alternative port...
+[15:46:44] [SUCCESS] Server running on http://localhost:3001
+[15:46:44] [SUCCESS] Server running on http://localhost:3001
+[15:46:53] [INFO] Client disconnected from web interface
+[15:47:08] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[15:47:08] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at async JSHandle.evaluateHandle (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\JSHandle.js:97:16)
+    at async WaitTask.rerun (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\WaitTask.js:114:28)
+[15:47:08] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[15:47:20] [SUCCESS] Server running on http://localhost:3000
+[15:51:22] [SUCCESS] Server running on http://localhost:3000
+[15:52:06] [INFO] New client connected to web interface
+[15:52:12] [INFO] Client disconnected from web interface
+[15:57:08] [INFO] Initializing WhatsApp client with simplified configuration...
+[15:57:08] [SUCCESS] Server running on http://localhost:3000
+[15:57:15] [SUCCESS] Successfully authenticated with WhatsApp
+[15:57:15] [SUCCESS] WhatsApp client is ready and connected!
+[15:57:29] [INFO] New client connected to web interface
+[15:57:35] [INFO] Client disconnected from web interface
+[15:58:23] [INFO] Connection state changed to: OPENING
+[15:58:24] [INFO] Connection state changed to: PAIRING
+[15:58:24] [INFO] Connection state changed to: CONNECTED
+[15:59:17] [INFO] Connection state changed to: OPENING
+[15:59:18] [INFO] Connection state changed to: PAIRING
+[15:59:18] [INFO] Connection state changed to: CONNECTED
+[15:59:18] [INFO] New client connected to web interface
+[15:59:24] [INFO] Client disconnected from web interface
+[15:59:31] [INFO] New client connected to web interface
+[15:59:42] [INFO] Client disconnected from web interface
+[15:59:46] [INFO] New client connected to web interface
+[16:00:29] [INFO] New client connected to web interface
+[16:00:34] [INFO] Client disconnected from web interface
+[16:04:28] [INFO] New client connected to web interface
+[16:04:33] [INFO] Client disconnected from web interface
+[16:08:56] [INFO] New client connected to web interface
+[16:09:02] [INFO] Client disconnected from web interface
+[16:12:40] [INFO] New client connected to web interface
+[16:12:46] [INFO] Client disconnected from web interface
+[16:13:29] [INFO] Client disconnected from web interface
+[16:13:29] [INFO] New client connected to web interface
+[16:13:31] [INFO] Client disconnected from web interface
+[16:13:31] [INFO] New client connected to web interface
+[16:13:32] [INFO] Client disconnected from web interface
+[16:13:32] [INFO] New client connected to web interface
+[16:13:33] [INFO] Client disconnected from web interface
+[16:13:33] [INFO] New client connected to web interface
+[16:14:01] [INFO] Detected group ID: 120363413164388361@g.us
+[16:14:01] [INFO] Attempting to verify group ID: 120363413164388361@g.us
+[16:14:01] [INFO] Detected newer WhatsApp group ID format: 120363413164388361@g.us
+[16:14:01] [INFO] Using direct API calls for newer group ID format
+[16:14:01] [ERROR] Failed to get participants for group ID 120363413164388361@g.us: client.getParticipants is not a function
+[16:14:01] [WARNING] Proceeding with group operations despite verification failure
+[16:14:02] [INFO] Step 1/2: Saving contact 85292287159 to device contacts...
+[16:14:02] [SUCCESS] Contact "WhatsApp User 7159" (85292287159) saved successfully
+[16:14:03] [INFO] Step 2/2: Adding saved contact 85292287159 to group 120363413164388361@g.us...
+[16:14:03] [ERROR] Error adding contact to group (attempt 1/3): client.addParticipants is not a function
+[16:14:05] [ERROR] Error adding contact to group (attempt 2/3): client.addParticipants is not a function
+[16:14:07] [ERROR] Error adding contact to group (attempt 3/3): client.addParticipants is not a function
+[16:14:09] [ERROR] Error processing 85292287159: client.addParticipants is not a function
+[16:14:09] [INFO] Taking a 120 second break after failure
+[16:14:46] [INFO] Client disconnected from web interface
+[16:14:46] [INFO] New client connected to web interface
+[16:15:17] [INFO] Detected group ID: 120363413164388361@g.us
+[16:15:44] [INFO] Client disconnected from web interface

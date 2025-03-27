@@ -1,0 +1,105 @@
+[06:15:33] [INFO] Initializing WhatsApp client with simplified configuration...
+[06:15:33] [SUCCESS] Server running on http://localhost:3000
+[06:15:50] [SUCCESS] Successfully authenticated with WhatsApp
+[06:15:54] [SUCCESS] WhatsApp client is ready and connected!
+[08:02:30] [INFO] Removed existing WhatsApp session to generate new QR code
+[08:02:30] [INFO] Initializing WhatsApp client with simplified configuration...
+[08:02:30] [SUCCESS] Server running on http://localhost:3000
+[08:02:40] [INFO] QR code received. Ready for scanning.
+[08:02:40] [INFO] QR code generated (2@lQeO5TWT0wP6MaSS+h...). Emitting to UI.
+[08:02:40] [INFO] QR code emitted to web interface
+[08:03:36] [SUCCESS] Successfully authenticated with WhatsApp
+[08:03:36] [SUCCESS] WhatsApp client is ready and connected!
+[08:47:40] [ERROR] Error removing auth directory: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+[08:47:40] [INFO] Initializing WhatsApp client with simplified configuration...
+[08:47:40] [WARNING] Port 3000 is already in use, trying alternative port...
+[08:47:40] [SUCCESS] Server running on http://localhost:3001
+[08:47:40] [SUCCESS] Server running on http://localhost:3001
+[09:08:33] [ERROR] Error removing auth directory: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+[09:08:33] [INFO] Initializing WhatsApp client with simplified configuration...
+[09:08:33] [WARNING] Port 3000 is already in use, trying alternative port...
+[09:08:33] [WARNING] Port 3000 is already in use, trying alternative port...
+[09:08:33] [WARNING] Port 3001 is already in use, trying alternative port...
+[09:08:33] [WARNING] Port 3000 is already in use, trying alternative port...
+[09:08:33] [ERROR] UNCAUGHT EXCEPTION: Listen method has been called more than once without closing.
+[09:08:33] [ERROR] Stack trace: Error [ERR_SERVER_ALREADY_LISTEN]: Listen method has been called more than once without closing.
+    at Server.listen (node:net:2041:11)
+    at startServer (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1526:12)
+    at Server.<anonymous> (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1533:13)
+    at Server.emit (node:events:530:35)
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[09:08:33] [INFO] Application will continue running despite the error
+[09:08:33] [SUCCESS] Server running on http://localhost:3002
+[09:08:33] [SUCCESS] Server running on http://localhost:3002
+[09:08:33] [SUCCESS] Server running on http://localhost:3002
+[09:08:33] [SUCCESS] Server running on http://localhost:3002
+[09:11:38] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[09:11:38] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[09:11:38] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[09:12:14] [ERROR] Error removing auth directory: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+[09:12:14] [INFO] Initializing WhatsApp client with simplified configuration...
+[09:12:14] [WARNING] Port 3000 is already in use, trying alternative port...
+[09:12:14] [WARNING] Port 3000 is already in use, trying alternative port...
+[09:12:14] [WARNING] Port 3001 is already in use, trying alternative port...
+[09:12:14] [WARNING] Port 3000 is already in use, trying alternative port...
+[09:12:14] [ERROR] UNCAUGHT EXCEPTION: Listen method has been called more than once without closing.
+[09:12:14] [ERROR] Stack trace: Error [ERR_SERVER_ALREADY_LISTEN]: Listen method has been called more than once without closing.
+    at Server.listen (node:net:2041:11)
+    at startServer (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1526:12)
+    at Server.<anonymous> (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\index.js:1533:13)
+    at Server.emit (node:events:530:35)
+    at emitErrorNT (node:net:1973:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[09:12:14] [INFO] Application will continue running despite the error
+[09:12:14] [SUCCESS] Server running on http://localhost:3002
+[09:12:14] [SUCCESS] Server running on http://localhost:3002
+[09:12:14] [SUCCESS] Server running on http://localhost:3002
+[09:12:14] [SUCCESS] Server running on http://localhost:3002
+[09:15:25] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[09:15:25] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[09:15:25] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
+[09:17:22] [INFO] Preparing WhatsApp authentication directory for new session
+[09:17:22] [INFO] Cleaned session data to generate new QR code
+[09:17:22] [INFO] Initializing WhatsApp client with simplified configuration...
+[09:17:22] [WARNING] Port 3000 is already in use, trying port 3001...
+[09:17:22] [WARNING] Port 3001 is already in use, trying port 3002...
+[09:17:22] [SUCCESS] Server running on http://localhost:3002
+[09:18:31] [INFO] Connection state changed to: OPENING
+[09:18:32] [INFO] Connection state changed to: PAIRING
+[09:18:32] [INFO] Connection state changed to: CONNECTED
+[09:22:00] [SUCCESS] Successfully authenticated with WhatsApp
+[09:22:00] [INFO] QR code received. Ready for scanning.
+[09:22:00] [INFO] QR code generated (undefined,0XX+0Ykb6B...). Emitting to UI.
+[09:22:00] [INFO] QR code emitted to web interface
+[09:22:00] [SUCCESS] Successfully authenticated with WhatsApp
+[09:22:00] [SUCCESS] WhatsApp client is ready and connected!
+[09:22:00] [SUCCESS] WhatsApp client is ready and connected!
+[09:22:00] [ERROR] WhatsApp client disconnected: LOGOUT
+[09:22:00] [ERROR] UNHANDLED REJECTION: Error: Error: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+[09:22:00] [ERROR] Stack trace: Error: Error: EBUSY: resource busy or locked, unlink 'C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\.wwebjs_auth\session\Default\chrome_debug.log'
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\authStrategies\LocalAuth.js:49:27
+    at async LocalAuth.logout (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\authStrategies\LocalAuth.js:47:13)
+    at async C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\whatsapp-web.js\src\Client.js:347:17
+[09:22:05] [WARNING] Attempting to reconnect WhatsApp client (Attempt 1/5)...
+[09:25:06] [ERROR] UNHANDLED REJECTION: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+[09:25:06] [ERROR] Stack trace: ProtocolError: Protocol error (Runtime.callFunctionOn): Target closed.
+    at C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:329:24
+    at new Promise (<anonymous>)
+    at CDPSessionImpl.send (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\Connection.js:325:16)
+    at ExecutionContext._ExecutionContext_evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:211:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ExecutionContext.evaluate (C:\Users\vikas\OneDrive\Desktop\whatsapp_add-mamber\node_modules\puppeteer-core\lib\cjs\puppeteer\common\ExecutionContext.js:107:16)
+[09:25:06] [WARNING] Error appears to be related to Puppeteer/WhatsApp connection. Attempting recovery...
